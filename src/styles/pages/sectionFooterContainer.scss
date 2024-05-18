@@ -1,0 +1,112 @@
+.sectionfooterContaint{
+    .containt{
+        width: 100%;
+        margin: 0px auto;
+        @include flex();
+
+        &>div{
+            width: 50%;
+            // margin: 1rem;
+            @include border;
+            .containt{
+                @include border;
+            }
+        }
+
+        .formContact{
+            margin: 1rem;
+            @include flex;
+            @include centerFlex;
+        }
+
+        .formContactContainer{
+            @include border;
+            @include flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // height: 100%;
+
+            width: 50%;
+            // height: 50%;
+            text-align: left;
+
+            .header{
+                @include border;
+
+                @include flex;
+                flex-direction: column;
+
+                .title{
+                    font-size: 2rem;
+                    text-transform: capitalize;
+                    font-weight: lighter;
+                }
+
+                .shortTitle{
+                    font-size: 1rem;
+                    font-weight: lighter;
+                    width: 100%;
+                    margin: 0px auto;
+                    text-align: left;
+                }
+            }
+            form{
+                // width: 75%;
+                width: 100%;
+                margin: 0px auto;
+                margin-top: 2rem;
+                div{
+                    @include border;
+                    margin-bottom: 2rem ;
+                    // &:last-child{
+                    //     padding-bottom: 0px;
+                    // }
+                    input,textarea{
+                        padding: 1rem;
+                        width: 100%;
+                        // height: 100%;
+                    }
+
+                    textarea{
+                        resize: none;
+                    }
+                }
+
+                .comment{
+                    // padding: 0px;
+                    height: 10rem;
+                    textarea{
+                        height: 100%;
+                        // -bottom: 0px;
+                    }
+                }
+
+                input[type="submit"]{
+                    border: 1px solid black;
+                    padding: .5rem 2rem;
+                    font-size: 1.25rem;
+                    // margin-top: 2rem;
+                    background: none;
+                    color: white;
+                    background: black;
+                    font-weight: lighter;
+                    // margin-bottom: .75rem;
+                }
+            }
+        }
+        .mapContact{
+            .containt{
+                position: relative;
+                @include border;
+                iframe{
+
+                    
+                    width:100%;
+                    height: 40rem;
+                    // height:100vh
+                }
+            }
+        }
+    }
+}

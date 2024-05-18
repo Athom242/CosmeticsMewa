@@ -1,0 +1,284 @@
+$widthSectionBrand:75%;
+$fontTitle:4rem;
+$fontTitle2:3rem;
+$fontTitle3:1.5rem;
+
+@mixin border{
+    border: 1px dashed #000000;
+}
+
+@mixin flex{
+    display:flex;
+    
+}
+
+@mixin centerFlex($pos:center,$posJustify:center){
+    justify-content: $posJustify;
+    align-items: $pos;
+}
+
+li{
+    list-style-type: none
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+}
+
+.navigation{
+    @include border;
+    // position: absolute;
+}
+
+.navigationContaint{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-items: center;
+    // position: absolute;
+
+    div{
+        display: flex;
+
+    }
+    a{
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .navBrandHeader{
+        transform: scale(1.5);
+        @include border;
+    }
+}
+
+.headerBrand{
+    @include border;
+}
+
+.brandCenter{
+    border: 1px dashed black;
+    width: $widthSectionBrand;
+
+    padding: 2rem;
+    height: 100%;
+
+    @include flex;
+    @include centerFlex;
+    
+    margin: 0px auto;
+
+    .brandDescr{
+        @include border;
+        .title{
+            font-size: 3rem;
+        }
+
+        .descr{
+            font-size: 1.25rem;
+            margin: 2rem 1rem;
+        }
+
+        .linkButton{
+            // padding: 1rem;
+            // @include border;
+
+            .linkFindBeauty{
+                padding: 1rem 2rem;
+                @include border;
+
+                
+            }
+        }
+    }
+
+    .brandImage{
+        // height: 75vh;
+        @include flex;
+        @include centerFlex(flex-end,space-between);
+        // overflow: hidden;
+        div{
+            @include border;
+
+            position: relative;
+        }
+
+        .imgRight{
+            position: relative;
+            bottom: 5rem;
+        }
+        img{
+            // position: absolute;
+            // top: 0px;
+            // bottom: 0px;
+            // height: 100%;
+            // position: absolute;
+            // height: 100%;
+        }
+    }
+
+    
+}
+
+.headerBrandContaint{
+    .headerImage{
+        justify-content: space-between;
+    }
+}
+
+
+.sectionPresProductList{
+    @include flex();
+    @include centerFlex();
+    flex-direction: column;
+    @include border();
+}
+
+.productPresItem{
+    @include border;
+    width: calc($widthSectionBrand *.85);
+    margin: 1rem 0px;
+
+    .productPresContaint{
+        @include flex();
+        @include centerFlex();
+        @include border;
+        flex-direction: row;       
+    }
+
+
+
+    .imgProduct{
+        width: 40%;
+        height: 100%;
+
+        @include border;
+    }
+
+    .descrProduct{
+        @include border;
+        width: 60%;
+        font-size: $fontTitle3;
+        text-align: left;
+        padding: 1rem;
+        &>*{
+            margin-bottom: 1.5rem;
+        }
+        .title{
+            @include border();
+            
+            
+        }
+
+        .shortTitle{
+            font-size: calc($fontTitle3 * .80);
+        }
+
+        p{
+            font-size: 1rem;
+        }
+        .linkDiscover{
+           .linkDiscoverAction{
+            @include border;
+            padding: .5rem 2rem;
+
+            // position: relative;
+            // left: 25%;
+
+            // transform: translateX(-50%);
+           } 
+        }
+    }
+
+
+    .productPresContaint.reverse{
+        flex-direction: row-reverse;
+
+    }
+}
+
+footer{
+    @include border();
+
+    .footerContaint{
+        @include border();
+    }
+
+    .footerOuter{
+        @include border();
+        @include flex();
+        @include centerFlex($pos:top);
+        // height: 20rem;
+        padding: 8rem 0px;
+
+        .tail{
+            // justify-content: flex-end;
+            &>*{
+                @include flex();
+                @include centerFlex();
+                @include border();
+                padding: 0px;
+
+                a{
+                    padding: 1rem
+                }
+            }
+        }
+
+
+
+        // padding: 5rem;
+    }
+
+    .footerInner{
+        @include flex();
+        width: calc($widthSectionBrand*.85);
+        // @include centerFlex($posJustify:space-between);
+        justify-content: space-between;
+        align-items: center;
+        @include border;
+
+
+        .footerItem{
+            display: flex;
+            flex-direction: column;
+
+            justify-content:space-between;
+        }
+
+        &>div{
+            @include flex();
+            // @include centerFlex($pos:center,$posJustify:center);
+            flex-direction: column;
+            height: 100%;
+            flex-grow: 1;
+            margin: 1rem;
+
+            width: 20%;
+
+            .head{
+                @include border()
+            }
+        }
+    }
+    .footerBottom{
+        .containt{
+            @include border();
+            @include flex();
+            @include centerFlex();
+            margin: 0px;
+
+            a{
+                padding: 1rem;
+            }
+        }
+
+    }
+}
+
+
+@import "./sectionFooterContainer.scss";
+@import "./sectionTestimonial.scss"
