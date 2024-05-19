@@ -1,12 +1,23 @@
 .sectionTestimonial{
     @include border;
+
     padding: 5rem;
+
+    .header{
+
+    }
 
     .containt{
         width: calc($widthSectionBrand* .95);
         @include border;
         margin: 0px auto;
         @include flex;
+        flex-direction: column;
+
+        .header{
+            padding: 2rem 0px;
+            // font-size: 2rem;
+        }
     }
 
     .testimonialItem{
