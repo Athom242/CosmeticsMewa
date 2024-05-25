@@ -3,6 +3,10 @@ $fontTitle:4rem;
 $fontTitle2:3rem;
 $fontTitle3:1.5rem;
 
+*{
+    box-sizing: border-box;
+}
+
 @mixin border{
     border: 1px dashed #000000;
 }
@@ -27,8 +31,18 @@ a{
     display: inline-block;
 }
 
+header{
+    padding: 0px !important;
+    position: relative;
+    // width: 100vw;
+    // overflow: hidden
+    // overflow: auto
+}
+
 .navigation{
     @include border;
+    position: relative;
+
     // position: absolute;
 }
 
@@ -38,6 +52,8 @@ a{
     justify-content: space-between;
 
     align-items: center;
+
+    position: relative;
     // position: absolute;
 
     div{
@@ -53,6 +69,105 @@ a{
         transform: scale(1.5);
         @include border;
     }
+
+    li{
+        position: relative;
+    }
+}
+
+.subNavigation{
+    @include border();
+    width: 75vw;
+    // height: 15rem;
+
+    // opacity: 0;
+    transition: .5s all;
+
+    background-color: orangered;
+
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    right: 0px;
+
+    padding:1rem;
+
+    box-sizing: border-box;
+
+    display:none !important;
+    
+    // flex-grow: 1;
+    // opacity: 0;
+
+    // flex-grow: ;
+
+    z-index:10000;
+
+    .containt{
+        @include border();
+        
+        width: 100%;
+        // width:%;
+
+        position: relative;
+        // margin: 1rem auto;
+        
+    }
+
+    &.active{
+        display: flex !important;
+        flex-direction: row;
+        // opacity: 1;
+        transition: .5s all;
+    }
+
+    .menuLink{
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        @include border();
+
+        .menuLinkItem{
+            @include border();
+            text-align: center;
+
+            a{
+                display: inline-block;
+                @include border();
+                width: 100%;
+
+                &:hover{
+                    background: blue;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .menuLinkViewport{
+        width: 100%;
+        // flex-grow: 1;
+        padding: 1rem;
+
+        .containt{
+            display: flex;
+            overflow: hidden
+        }
+
+        @include border();
+
+        .subNavigationItem{
+            @include border();
+            width: 100%;
+            height: 100%;
+            padding: 1rem;
+            flex-shrink: 0;
+
+            .containt{
+                @include border();
+            }
+        }
+    }
 }
 
 .headerBrand{
@@ -67,7 +182,7 @@ a{
     height: 100%;
 
     @include flex;
-    @include centerFlex;
+    @include centerFlex($posJustify:space-between);
     
     margin: 0px auto;
 
@@ -75,19 +190,22 @@ a{
         @include border;
         .title{
             font-size: 3rem;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         }
 
         .descr{
             font-size: 1.25rem;
-            margin: 2rem 1rem;
+            margin: 1rem auto;
+            width: 75%;
+            // margin: 0px auto;
         }
 
         .linkButton{
-            // padding: 1rem;
+            padding: 1rem;
             // @include border;
 
             .linkFindBeauty{
-                padding: 1rem 2rem;
+                padding: .75rem 4rem;
                 @include border;
 
                 
@@ -122,29 +240,92 @@ a{
 
     
 }
+.headerBrand{
+
+}
+
+.headerImageSplash{
+    position: absolute;
+
+    bottom: -10%;
+}
 
 .headerBrandContaint{
+    background: url("../../media/h-6-single-img-1-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment:local;
+    margin: 1rem;
+    position: relative;
+    
+    // color: ;
+
+    // &+img{
+    //     position: absolute;
+    //     // top: 0px;
+    // }
+}
+
+
+.headerBrandContaint{
+    .actionChangeBrand{
+        @include border();
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+
+        transform: translateY(-50%);
+        padding: 1rem;
+
+        font-size: 4rem;
+        z-index: 0;
+
+        // background: #000000;
+        
+        
+    }
+
+    .brandCenter{
+        *{
+            z-index: 300;
+        }
+        z-index: 300;
+        // background: orangered;
+    }
     .headerImage{
         justify-content: space-between;
+        
     }
 }
 
 
 .sectionPresProductList{
+    // padding-top: 10rem;
     @include flex();
     @include centerFlex();
     flex-direction: column;
     @include border();
+
+    background: url("https://image.similarpng.com/very-thumbnail/2020/10/Flow-liquid-foundation-splash-cream-3d-on-transparent-background-PNG.png");
+    background-repeat: no-repeat;
+    background-position: top 50% left 0px;
 }
 
 .productPresItem{
     @include border;
     width: calc($widthSectionBrand *.85);
-    margin: 1rem 0px;
+    margin: 4rem 0px;
+
+    &:first-child{
+        margin-top: 12rem;
+    }
 
     .productPresContaint{
         @include flex();
-        @include centerFlex();
+        @include centerFlex($pos:flex-end);
         @include border;
         flex-direction: row;       
     }
@@ -154,6 +335,12 @@ a{
     .imgProduct{
         width: 40%;
         height: 100%;
+        padding-right: 2rem;
+        padding-top: 2rem;
+
+        img{
+            width: 100%
+        }
 
         @include border;
     }
@@ -164,6 +351,8 @@ a{
         font-size: $fontTitle3;
         text-align: left;
         padding: 1rem;
+        margin-bottom: 5%;
+
         &>*{
             margin-bottom: 1.5rem;
         }
@@ -202,6 +391,12 @@ a{
 
 footer{
     @include border();
+
+    background-color: #000000;
+    color: white;
+    *{
+        color: white
+    }
 
     .footerContaint{
         @include border();
@@ -265,15 +460,31 @@ footer{
         }
     }
     .footerBottom{
+        border-top:1px solid rgba(255, 255, 255, 0.5);
+        position: relative;
         .containt{
             @include border();
             @include flex();
             @include centerFlex();
             margin: 0px;
 
+            font-size: .8rem;
+            font-weight: lighter;
+
             a{
-                padding: 1rem;
+                padding: .5rem 1rem;
+                // border: 1px solid rgba($color: white, $alpha: .5)
             }
+        }
+
+        .topPageAction{
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: inline-block;
+            padding: 1.5rem 1rem;
+
+            position:absolute;
+            bottom: 100%;
+            right: 5%
         }
 
     }

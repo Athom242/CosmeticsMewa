@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
 
 
 function ProductItem(props){
@@ -89,20 +89,20 @@ function SectionTestimonial(props){
 function SectionPresProductList(props){
     return (
         <div className="sectionPresProductList">
-            <ProductPresItem/>
-            <ProductPresItem reverse/>
-            <ProductPresItem/>
-            <ProductPresItem reverse/>
+            <ProductPresItem imgFile="https://biagiotti.qodeinteractive.com/wp-content/uploads/2019/08/h-6-single-img-2.png"/>
+            <ProductPresItem imgFile="https://biagiotti.qodeinteractive.com/wp-content/uploads/2019/08/h-6-single-img-3.png" reverse/>
+            <ProductPresItem imgFile="https://biagiotti.qodeinteractive.com/wp-content/uploads/2019/08/h-6-single-img-2.png"/>
+            <ProductPresItem imgFile="https://biagiotti.qodeinteractive.com/wp-content/uploads/2019/08/h-6-single-img-3.png" reverse/>
         </div>
     )
 }
-function ProductPresItem({props,reverse}){
+function ProductPresItem({props,imgFile,reverse}){
     return(
         <div className="productPresItem">
             <div className={"productPresContaint"+(reverse?" reverse":"")}>
                 <div className="imgProduct">
                     <div className="containt">
-
+                        <img src={imgFile} alt="" />
                     </div>
                 </div>
 
@@ -129,7 +129,11 @@ function HeaderBrand(props){
         <div className="headerBrand">
             <div className="headerBrandContaint">
                 <div className="headerImage">
-                    <div className="leftAction"></div>
+                    <div className="actionChangeBrand">
+                        <div className="leftAction"><i class="bi bi-arrow-left-square"></i></div>
+                        <div className="rightAction"><i class="bi bi-arrow-right-square"></i></div>
+                    </div>
+                    
                     <div className="brandCenter">
                         <div className="brandDescr">
                             <h2 className="title">
@@ -148,20 +152,103 @@ function HeaderBrand(props){
                             <div className="imgLeft"><img src="/assets/img/sliderRight.png" alt="" /></div>
                         </div>
                     </div>
-                    <div className="rightAction"></div>
                 </div>
+
+
+            </div>
+
+            <div className="headerImageSplash">
+                    <img src="https://biagiotti.qodeinteractive.com/wp-content/uploads/2019/09/h-6-single-img-10.png" alt="fichier dans le monde" />
+                </div>
+        </div>
+    )
+}
+
+function SubNavigationItem(props){
+    const handlePosElement=(event)=>{
+        // const linkPlace=document.getElementsByClassName
+        const posElt=event.currentTarget;
+        const viewpoLink=document.getElementsByClassName("subNavigationItem");
+        // console.log(viewpoLink.style);
+        for(let item of viewpoLink){
+            item.style.transform="translateX(-"+posElt.offsetWidth+")";
+            item.style.background="blue";
+            item.querySelectorAll('.containt')[0].innerHTML="<p>"+item.offsetWidth+"</p>";
+            console.log(item);
+
+        }
+        // viewpoLink.style.transform=`translateX(`+posElt.offsetWidth+`)`;
+        console.log(posElt.offsetLeft);
+    }
+    return(
+        <div className="subNavigationItem" id={props.forLink.toLowerCase()+"NavigationItem"} onClick={handlePosElement}>
+            <div className="containt">
+                <h1>{props.forLink}</h1>
             </div>
         </div>
     )
 }
+
+const  SubNavigation=forwardRef((props,ref)=>{
+    const ListObjectLink=["Acceuil","Shop","Contact-Nous","Fichier","A-props"];
+
+    const handleLinkDisplay=(event)=>{
+        //action apres appuyer sur lien du navigateur
+        const link=event.currentTarget;
+        let linkFeature=document.querySelector("#"+link.id+"NavigationItem");
+        let classLinkFeature=document.querySelectorAll(".subNavigationItem");
+
+        for(let index of classLinkFeature){
+            index.style.transform="translateX(-"+linkFeature.offsetLeft+"px)";
+        }
+
+        // linkFeature.style.transform="translate"
+        // linkFeature.style.transform="translateX("+linkFeature.offsetLeft+"px)";
+        console.log(link.id);
+        console.log(linkFeature);
+    };
+
+    return(
+        <div className="subNavigation " ref={ref}>
+            <div className="containt">
+                <div className="menuLink">
+                    {ListObjectLink.map(index=>{
+                        return(<div className="menuLinkItem"><a href="#" id={index.toLowerCase()} onMouseEnter={handleLinkDisplay}>{index}</a></div>)
+                    })}
+                </div>
+
+                <div className="menuLinkViewport">
+                    <div className="containt">
+                    {ListObjectLink.map(index=>{
+                        return(<SubNavigationItem forLink={index}/>)
+                    })}
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+});
+
 function Navigation(props){
+    const subNavigationRef=useRef(null);
+
+    const handleDisplaySubNav=(event)=>{
+        const link=event.currentTarget;
+        const subNavigation=subNavigationRef.current;
+        subNavigation.classList.toggle("active");
+
+        console.log(link.id);
+        console.log(subNavigation.classList);
+    }
+
     return(
         <nav className="navigation">
 
             <div className="navigationContaint">
                 <div class="leftRight">
                     <li>
-                        <a href="#"><i class="bi bi-list"></i></a>
+                        <a href="#" onClick={handleDisplaySubNav} id="menuNavigation"><i class="bi bi-list"></i></a>
+                        <SubNavigation ref={subNavigationRef}/>
                     </li>
 
                     <li>
@@ -191,6 +278,7 @@ function Header(props){
     return(
         <header className="container-fluid border border-dark">
             <Navigation/>
+           
             <HeaderBrand/>
         </header>
     )
@@ -301,6 +389,8 @@ function FooterContact(props){
 function Footer(props){
     return(<footer>
         <div className="footerContaint">
+
+
             <div className="footerOuter">
 
                 <div className="footerInner">
@@ -314,6 +404,9 @@ function Footer(props){
             </div>
         </div>
         <div className="footerBottom">
+            <div className="topPageAction">
+                    <span>Link</span>
+                </div>
             <ul className="containt">
                 {["PRIVACY POLICY","TERMS AND CONDITIONS","ABOUT","SHIPPING INFO","RETURNS/EXCHANGES","CONTACT"].map(index=>{
                     return(

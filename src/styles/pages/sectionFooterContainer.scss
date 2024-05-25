@@ -4,6 +4,14 @@
         margin: 0px auto;
         @include flex();
 
+        background: url("../../media/h-6-single-img-1-1.jpg");
+        background-size:cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // background-attachment: fixed;
+
+
+
         &>div{
             width: 50%;
             // margin: 1rem;
@@ -17,6 +25,14 @@
             margin: 1rem;
             @include flex;
             @include centerFlex;
+            
+
+            background: url("../../media/h-6-single-img-1-1.jpg");
+            background-size:cover;
+            // background-position: center;
+            background-repeat: no-repeat;
+            // background-attachment: fixed;
+
         }
 
         .formContactContainer{
