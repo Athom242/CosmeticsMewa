@@ -39,12 +39,53 @@ header{
     // overflow: auto
 }
 
+.pageContainerAction{
+    height: 100vh;
+    width: 100%;
+    @include border();
+
+    position: absolute;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 10000;
+    display: none;
+
+    &.active{
+        display: initial;
+    }
+
+    .navigatePage{
+        border: 1px dashed red;
+        // height: 10vh;
+        display: flex;
+        
+        flex-direction: row-reverse;
+        position: relative;
+    }
+
+    .closeButton{
+        border: 1px dashed black;
+        padding: 0px;
+        span{
+            display: inline-block;
+            // padding: 2rem;
+            font-size: 2.5rem;
+            padding: .25rem;
+            @include border();
+
+            &:hover{
+                color: red;
+            }
+        }
+    }
+}
+
 .navigation{
     @include border;
     position: relative;
 
     // position: absolute;
 }
+
 
 .navigationContaint{
     display: flex;
@@ -174,44 +215,61 @@ header{
     @include border;
 }
 
+
+
 .brandCenter{
     border: 1px dashed black;
     width: $widthSectionBrand;
 
     padding: 2rem;
     height: 100%;
+    overflow-y:scroll;
 
     @include flex;
     @include centerFlex($posJustify:space-between);
     
     margin: 0px auto;
 
-    .brandDescr{
-        @include border;
-        .title{
-            font-size: 3rem;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
+    .brandCenterItem{
+        flex-shrink: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1rem;
+        border: 1px dashed black;
 
-        .descr{
-            font-size: 1.25rem;
-            margin: 1rem auto;
-            width: 75%;
-            // margin: 0px auto;
-        }
 
-        .linkButton{
-            padding: 1rem;
-            // @include border;
-
-            .linkFindBeauty{
-                padding: .75rem 4rem;
-                @include border;
-
-                
+        .brandDescr{
+            @include border;
+            .title{
+                font-size: 3rem;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+    
+            .descr{
+                font-size: 1.25rem;
+                margin: 1rem auto;
+                width: 75%;
+                // margin: 0px auto;
+            }
+    
+            .linkButton{
+                padding: 1rem;
+                // @include border;
+    
+                .linkFindBeauty{
+                    padding: .75rem 4rem;
+                    @include border;
+    
+                    
+                }
             }
         }
+
     }
+
+
 
     .brandImage{
         // height: 75vh;
@@ -398,6 +456,10 @@ footer{
         color: white
     }
 
+    ul{
+        padding: 0px;
+    }
+
     .footerContaint{
         @include border();
     }
@@ -434,6 +496,7 @@ footer{
         // @include centerFlex($posJustify:space-between);
         justify-content: space-between;
         align-items: center;
+        text-align: center;
         @include border;
 
 
@@ -442,6 +505,27 @@ footer{
             flex-direction: column;
 
             justify-content:space-between;
+
+            &:first-child{
+                text-align: left;
+                @include border();
+                border-color: white;
+
+                .containt{
+                    text-align: left;
+                }
+            }
+
+            &:last-child{
+                text-align: right;
+
+                
+                .containt{
+                    text-align: right;
+                }
+            }
+
+
         }
 
         &>div{
@@ -478,13 +562,19 @@ footer{
         }
 
         .topPageAction{
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             display: inline-block;
             padding: 1.5rem 1rem;
 
             position:absolute;
             bottom: 100%;
-            right: 5%
+            right: 5%;
+            cursor:pointer;
+            &:hover{
+                border-color:white;
+                border-bottom-color: rgba(255, 255, 255, 0.25);
+                transition: .5s border;
+            }
         }
 
     }
@@ -494,3 +584,5 @@ footer{
 @import "./sectionFooterContainer.scss";
 @import "./sectionTestimonial.scss";
 @import "./sectionProductItem.scss";
+
+@import "./component/actionPageItem.scss"

@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 
 
 function ProductItem(props){
@@ -124,6 +124,29 @@ function ProductPresItem({props,imgFile,reverse}){
         </div>
     )
 }
+
+function BrandCenterItem(props){
+    return(
+        <div className="brandCenterItem">
+        <div className="brandDescr">
+            <h2 className="title">
+                SKIN SOLUTION
+            </h2>
+
+            <p className="descr">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, libero!
+            </p>
+
+            <div className="linkButton"><a href="#" className="linkFindBeauty">FIND BEAUTY</a></div>
+        </div>
+
+        <div className="brandImage">
+            <div className="imgRight"><img src="/assets/img/sliderLeft.png" alt="" /></div>
+            <div className="imgLeft"><img src="/assets/img/sliderRight.png" alt="" /></div>
+        </div>
+    </div>
+    )
+}
 function HeaderBrand(props){
     return(
         <div className="headerBrand">
@@ -135,22 +158,10 @@ function HeaderBrand(props){
                     </div>
                     
                     <div className="brandCenter">
-                        <div className="brandDescr">
-                            <h2 className="title">
-                                SKIN SOLUTION
-                            </h2>
+                       <BrandCenterItem/>
+                       <BrandCenterItem/>
+                       <BrandCenterItem/>
 
-                            <p className="descr">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, libero!
-                            </p>
-
-                            <div className="linkButton"><a href="#" className="linkFindBeauty">FIND BEAUTY</a></div>
-                        </div>
-
-                        <div className="brandImage">
-                            <div className="imgRight"><img src="/assets/img/sliderLeft.png" alt="" /></div>
-                            <div className="imgLeft"><img src="/assets/img/sliderRight.png" alt="" /></div>
-                        </div>
                     </div>
                 </div>
 
@@ -229,8 +240,139 @@ const  SubNavigation=forwardRef((props,ref)=>{
     )
 });
 
+const PageContainerAction=forwardRef(function PageContainerAction(props,ref){
+    const [statePage,setStatePage]=useState({display:props.display})
+    // const mainPageRef=useRef(null);
+
+    const handleClose=(event)=>{
+        let linkPageAction=document.querySelectorAll(".pageContainerAction .actionPageNavItem.active")[0];
+        console.log(linkPageAction);
+
+        ref.current.classList.toggle("active");// on ferme container de la page
+        linkPageAction.classList.toggle("active"); //On fait disparaitre le container de fonctionnement 
+        console.log(props.display);
+    }
+
+    return(
+        <div className="pageContainerAction" ref={ref}>
+            <div className="navigatePage">
+                <div className="closeButton">
+                    <span onClick={handleClose}><i class="bi bi-x-square-fill"></i></span>
+                </div>
+            </div>
+            <div className="containt">
+                <LoginPage/>
+                <SearchProductPageAction/>
+                <ShopListPageAction/>:
+
+                {/* <ShopListPageAction/>
+                <SearchProductPageAction/>
+                <LoginPage/> */}
+            </div>
+        </div>
+
+    )
+})
+
+
+
+function LoginPage(props){
+    return(
+        <div className="loginPageContainer actionPageNavItem login">
+            <p>Bonjour tout le monde je suis le Login page</p>
+        </div>
+    )
+}
+function ShopListPageAction(props){
+    const dataProductSelect=[];//Produit sont formés de la liste des IDProduct->IDCategoryProduct des poduits et le nombre de produit selectionner 
+    
+    const headerTable=(headerListName)=>{
+      return(
+        <thead>
+            <tr>
+                {/* {VoidCel?<tr>{""}</tr>:""*/} {/*si voidcell est true alors une cellule vide est creer */}
+                {headerListName.map(index=>{
+                    return(<td>{index}</td>)
+                })}
+            </tr>
+        </thead>
+      )  
+    };
+
+    const ButtonCount=(props)=>{
+        return(
+            <div className="numberCount">
+                <span className="left"></span>
+                <span className="containt"><input type="number" min={0} max={100}  placeholder="0"/></span>
+                <span className="right"></span>
+            </div>
+        )
+    };
+
+    const bodyTable=(dataTable)=>{
+        const checkSize="";
+        console.log(dataTable);
+        // const keys=Object.dataTable.keys();
+        return(
+            <tbody>
+                {dataTable.map(index=>{
+                    let keys=Object.keys(index);
+                    return(
+                        <tr>
+                            {keys.map(indexKey=>{
+                                return(<td>
+                                    {index[indexKey]}
+                                </td>)
+                                
+                            })}
+                            {/* <td className="functionNumber">
+                                <ButtonCount value={0}/>
+                            </td> */}
+                        </tr>
+                    )
+                })}
+            </tbody>
+        )
+    };
+    return(
+        <div className="shopListDisplayView actionPageNavItem shop">
+            <p>Bonjour tout le monde je suis le Shop page</p>
+            <div className="header">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, porro.</p>
+            </div>
+            <div className="containt">
+                <table>
+                    {headerTable(["Nom Complet","Price","nimbre de produit"])}
+                    {bodyTable([{name:"fichier",price:12,number_File:<ButtonCount/>},
+                                {name:"fichier",price:12,number_File:<ButtonCount/>},
+                                {name:"fichier",price:12,number_File:<ButtonCount/>},
+                                {name:"fichier",price:12,number_File:<ButtonCount/>},
+                                {name:"fichier",price:12,number_File:<ButtonCount/>},])}
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    )
+}
+
+function SearchProductPageAction(props){
+    return(
+        <div className="searchProductPageAction actionPageNavItem search">
+            <p>Bonjour tout le monde je suis le Search page</p>
+        </div>
+    )
+}
+
 function Navigation(props){
     const subNavigationRef=useRef(null);
+    const linkRef=useRef(null);
+    const linkPageContainerRef=useRef(null);
+    // linkRef=linkRef.current;.current
+    // const [stateLink,]=useState({
+    //     display:props.stateLink,
+    // });
 
     const handleDisplaySubNav=(event)=>{
         const link=event.currentTarget;
@@ -241,9 +383,39 @@ function Navigation(props){
         console.log(subNavigation.classList);
     }
 
+
+    const handleDisplayPageAction=(event)=>{
+        const target=event.currentTarget;
+        const pageAction=document.querySelectorAll(".actionPageNavItem."+target.id)[0];
+
+        // console.log(".actionPageNavItem ."+target.id);
+
+        // console.log(target,linkRef.current);
+        console.log(target.id);
+        console.log(linkPageContainerRef);
+        console.log(pageAction);
+
+        pageAction.classList.toggle("active");
+        // console.log(index.classList);
+
+        // pageAction
+
+        
+
+        // for(let index of pageAction){
+            // if(index.classList.contains(target.id)){
+            //     index.classList.toggle("active");
+            // }
+
+            // console.log(index.classList);
+        // }
+        linkPageContainerRef.current.classList.toggle("active");
+        // console.log(linkPageContainerRef.current);
+    }
+
     return(
         <nav className="navigation">
-
+            <PageContainerAction display={linkRef} ref={linkPageContainerRef}/>
             <div className="navigationContaint">
                 <div class="leftRight">
                     <li>
@@ -252,7 +424,7 @@ function Navigation(props){
                     </li>
 
                     <li>
-                        <a href="#"><i class="bi bi-person-fill"></i></a>
+                        <a href="#" onClick={handleDisplayPageAction} id="login" ref={linkRef}><i class="bi bi-person-fill"></i></a>
                     </li>
                 </div>
 
@@ -261,12 +433,12 @@ function Navigation(props){
                 </div>
 
                 <div className="navRight">
-                    <li>
-                        <a href="#"><i class="bi bi-search"></i></a>
+                    <li id="searchProduct">
+                        <a href="#" onClick={handleDisplayPageAction} id="search" ref={linkRef}><i class="bi bi-search"></i></a>
                     </li>
 
-                    <li>
-                        <a href="#"><i class="bi bi-cart4"></i></a>
+                    <li id="shopListProduct">
+                        <a href="#" onClick={handleDisplayPageAction} id="shop" ref={linkRef}><i class="bi bi-cart4"></i></a>
                     </li>
                 </div>
             </div>
@@ -288,7 +460,7 @@ function Header(props){
 
 function FooterLinkCategory(props){
     return(
-        <div className="footerLinkCategory">
+        <div className="footerItem footerLinkCategory">
             <div className="head">
                 <h4 className="title">Catgerory</h4>
             </div>
@@ -297,15 +469,23 @@ function FooterLinkCategory(props){
                 <ul>
                     {[
                         {
-                            title:"Moussavou",
+                            title:"Acceuil",
+                            link:"./"
+                        },
+                        {
+                            title:"Shop",
                             link:"#"
                         },
                         {
-                            title:"Moussavou",
+                            title:"Fichier dans le film",
                             link:"#"
                         },
                         {
-                            title:"Moussavou",
+                            title:"Contactez-nous",
+                            link:"#"
+                        },
+                        {
+                            title:"Apropos",
                             link:"#"
                         },
 
@@ -321,7 +501,7 @@ function FooterLinkCategory(props){
 }
 function FooterDescr(props){
     return(
-        <div className="footerDescr">
+        <div className="footerItem footerDescr">
             <div className="head">
                 <h2 className="title">{props.title}</h2>
             </div>
@@ -358,13 +538,13 @@ function FooterContact(props){
                                     link:"#"
                                 },
                                 {
-                                    icon:<i class="bi bi-paypal"></i>,
-                                    title:"paypal",
+                                    icon:<i class="bi bi-credit-card-fill"></i>,
+                                    title:"Credit card fill",
                                     link:"#"
                                 },
                                 {
-                                    icon:<i class="bi bi-paypal"></i>,
-                                    title:"paypal",
+                                    icon:<i class="bi bi-credit-card-fill"></i>,
+                                    title:"Credit card fill",
                                     link:"#"
                                 },
                                 {
@@ -386,7 +566,27 @@ function FooterContact(props){
         </div>
     )
 }
+
+// window.addEventListener("scroll",()=>{
+//     console.log(window.scrollY);
+// })
 function Footer(props){
+
+    const handleLinkTop=(event)=>{
+        const pageHeader=document.querySelectorAll(".headerBrand")[0];
+        const linkButtonTop=event.currentTarget;
+        const body=document.querySelector("#App");
+
+        window.scroll({
+            top: pageHeader.offsetTop,
+            left: 0,
+            behavior: "smooth"
+          });
+        // body.scrollTop=pageHeader.offsetTop;
+
+
+        console.log("PageHeader ",pageHeader.offsetTop);
+    };
     return(<footer>
         <div className="footerContaint">
 
@@ -405,7 +605,7 @@ function Footer(props){
         </div>
         <div className="footerBottom">
             <div className="topPageAction">
-                    <span>Link</span>
+                    <span onClick={handleLinkTop}>Link</span>
                 </div>
             <ul className="containt">
                 {["PRIVACY POLICY","TERMS AND CONDITIONS","ABOUT","SHIPPING INFO","RETURNS/EXCHANGES","CONTACT"].map(index=>{

@@ -10,7 +10,7 @@ import Home from './pages/home';
 
 function App() {
   return (
-    <div className="App">
+    <div id="App">
       <BrowserRouter>
         <Routes>
           <Route index element={<Home/>}/>

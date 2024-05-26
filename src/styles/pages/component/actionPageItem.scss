@@ -1,0 +1,21 @@
+.actionPageNavItem{
+    border: 1rem solid white;
+    width: 75vw;
+    margin: 2rem auto;
+    padding: 1rem;
+    // padding: 5rem;
+    height: 50rem;
+    display: none;
+    color: white;
+
+    &.active{
+        display: block; 
+    }
+} 
+.actionPageNavItem .search{
+    .headerPage{
+        .title{
+            font-size: 2rem;
+        }
+    }
+}
