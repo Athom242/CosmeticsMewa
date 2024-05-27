@@ -7,6 +7,7 @@ import './styles/pages/home.scss';
 
 
 import Home from './pages/home';
+import ShopPageAction from './pages/shopPageAction';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Home/>}/>
 
           <Route path='/home' element={<Home/>}/>
+          <Route path='/shopPageAction' element={<ShopPageAction/>}/>
           {/* <Route/> */}
         </Routes>
       </BrowserRouter>
