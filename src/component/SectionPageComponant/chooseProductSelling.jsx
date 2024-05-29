@@ -17,6 +17,18 @@ export default function ChooseProductSelling(props){
     )
 }
 
+
+function FeatureProduct(props){
+    return(
+        <div className="featureProductItem">
+            <ul className="listFeature">
+                <li className="addShop"><a href="#">add</a></li>
+                <li className="viewMore"><a href="#">view</a></li>
+                <li className="wishList"><a href="#">wishList</a></li>
+            </ul>
+        </div>
+    )
+}
 function ProductItem(props){
     const price=Math.ceil(Math.random()*10);
     const priceLast=Math.ceil(Math.random()*10);
@@ -25,6 +37,8 @@ function ProductItem(props){
             <div className="productItemContainer">
                 <div className="imgProduct">
                     <div className="state">space</div>
+                    <FeatureProduct/>
+
                 </div>
 
                 <div className="bottomProductDescr">
