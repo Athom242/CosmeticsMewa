@@ -1,0 +1,54 @@
+.shopPageAction{
+
+}
+
+
+.headerTitle ,.shopPageContaint {
+    .containt{
+        width: calc($widthSectionBrand * .85);
+        margin: 1rem auto;
+    }
+}
+
+
+.headerTitle{
+    background: burlywood;        
+    // height: 10rem;
+    // @include border();
+    border: 1px dashed black;
+
+    .containt{
+        
+        border: 1px dashed black;
+        // margin: 1rem;
+
+        h1{
+            font-size: 4rem;
+    }}
+}
+
+.shopPageContaint{
+    border: 1px dashed black;
+    background-color: white;
+    padding: 4rem 0px;
+
+    // width: $widthSectionBrand;
+}
+
+.emptyShop{
+
+        #actionReturn{
+            display: inline-block;
+            border: 1px dashed black;
+
+            padding: 1rem 2rem ;
+        }
+
+        .title{
+            font-size: 2rem;
+        }
+
+        .shortDescr{
+            margin-bottom: 4rem;
+        }
+}

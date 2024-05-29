@@ -97,11 +97,14 @@ export function Navigation(props){
 
                 <div className="navRight">
                     <li id="searchProduct">
+                        <form action="#" className="searchForm">
+                            <input type="search" name="" id="" />
+                        </form>
                         <a href="#" onClick={handleDisplayPageAction} id="search" ref={linkRef}><i class="bi bi-search"></i></a>
                     </li>
 
                     <li id="shopListProduct">
-                        <Link to="./shopPageAction"  id="shop" ref={linkRef}><i class="bi bi-cart4"></i></Link>
+                        <Link to="/shopPageAction"  id="shop" ref={linkRef}><i class="bi bi-cart4"></i></Link>
                     </li>
                 </div>
             </div>

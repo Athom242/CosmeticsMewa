@@ -114,6 +114,42 @@ header{
     li{
         position: relative;
     }
+
+    .navRight{
+
+        position: relative;
+
+        .searchForm{
+            border: 1px dashed black;
+            // padding: 1rem;
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            width: 0rem;
+
+            margin-right: 1rem;
+
+            transform: translateY(-50%);
+            
+
+            input{
+                width: 0px;
+                padding: .5rem;
+                position: relative;
+                background: trans;
+                // position: absolute;
+                // top: 50%;
+                // right: 50%;
+
+                // transform: translate(0px,-50%);
+            }
+        }
+        #searchProduct{
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+    }
 }
 
 .subNavigation{
@@ -475,7 +511,7 @@ footer{
             // justify-content: flex-end;
             &>*{
                 @include flex();
-                @include centerFlex();
+                @include centerFlex($posJustify:flex-start);
                 @include border();
                 padding: 0px;
 
@@ -585,4 +621,5 @@ footer{
 @import "./sectionTestimonial.scss";
 @import "./sectionProductItem.scss";
 
-@import "./component/actionPageItem.scss"
+@import "./component/actionPageItem.scss";
+@import "./component/shopPageAction.scss";
