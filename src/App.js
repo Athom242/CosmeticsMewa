@@ -8,6 +8,7 @@ import './styles/pages/home.scss';
 
 import Home from './pages/home';
 import ShopPageAction from './pages/shopPageAction';
+import ShopListPage from './pages/shopListPages';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
 
           <Route path='/home' element={<Home/>}/>
           <Route path='/shopPageAction' element={<ShopPageAction/>}/>
+          <Route path='/shop' element={<ShopListPage/>}/>
           {/* <Route/> */}
         </Routes>
       </BrowserRouter>

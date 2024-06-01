@@ -114,7 +114,7 @@ export function Navigation(props){
 }
 
 const  SubNavigation=forwardRef((props,ref)=>{
-    const ListObjectLink=["Acceuil","Shop","Contact-Nous","Fichier","A-props"];
+    const ListObjectLink=[{name:"Acceuil",link:"./"},{name:"Shop",link:"./shop"},{name:"Contact-Nous",link:"./contactUs"},{name:"Fichier",link:"./fichier"},{name:"A-props",link:"./aboutUs"}];
 
     const handleLinkDisplay=(event)=>{
         //action apres appuyer sur lien du navigateur
@@ -138,14 +138,14 @@ const  SubNavigation=forwardRef((props,ref)=>{
             <div className="containt">
                 <div className="menuLink">
                     {ListObjectLink.map(index=>{
-                        return(<div className="menuLinkItem"><a href="#" id={index.toLowerCase()} onMouseEnter={handleLinkDisplay}>{index}</a></div>)
+                        return(<div className="menuLinkItem"><a href={index.link} id={index.name.toLowerCase()} onMouseEnter={handleLinkDisplay}>{index.name}</a></div>)
                     })}
                 </div>
 
                 <div className="menuLinkViewport">
                     <div className="containt">
                     {ListObjectLink.map(index=>{
-                        return(<SubNavigationItem forLink={index}/>)
+                        return(<SubNavigationItem forLink={index.name}/>)
                     })}
                     </div>
                 </div>

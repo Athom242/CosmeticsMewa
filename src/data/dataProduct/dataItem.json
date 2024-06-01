@@ -1,0 +1,47 @@
+{
+    "device":{
+        "current":"$",
+        "listExistance":["$","Euro","CFA XOF","CFA XAF"]
+    },
+    "products":[{
+        "idProductType": "#455010",
+        "price": 99.99
+      },
+      {
+        "idProductType": "#455030",
+        "price": 1.25
+      },
+      {
+        "idProductType": "#455020",
+        "price": 25.5
+      },
+      {
+        "idProductType": "#455025",
+        "price": 75
+      },
+      {
+        "idProductType": "#455011",
+        "price": 99.99
+      },
+      {
+        "idProductType": "#455035",
+        "price": 1.25
+      },
+      {
+        "idProductType": "#455023",
+        "price": 25.5
+      },
+      {
+        "idProductType": "#455027",
+        "price": 75
+      },
+      {
+        "idProductType": "#302545",
+        "price": 75
+      },
+      {
+        "idProductType": "#302544",
+        "price": 75
+      }
+    ]
+}

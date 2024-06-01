@@ -29,7 +29,7 @@ function FeatureProduct(props){
         </div>
     )
 }
-function ProductItem(props){
+export function ProductItem(props){
     const price=Math.ceil(Math.random()*10);
     const priceLast=Math.ceil(Math.random()*10);
     return(
