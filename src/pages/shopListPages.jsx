@@ -4,14 +4,56 @@ import { ProductItem } from "../component/SectionPageComponant/chooseProductSell
 import Header from "../component/headerPage/navigation"
 import { HeaderTitle } from "./shopPageAction"
 
+function FeatureOptionHeader(props){
+    const [listNumberFunction,setListNumberFunction]=useState(props.listNumberFunction);
+    const categoryProduct=["Fichier","Contact","Image"];
+
+    const number=listNumberFunction.length;
+    return(
+        <div className="featureOptionHeader">
+            <div className="showProductNumber">
+                <span>SHOWING 1-{number} OF {number} RESULTS</span>
+                <span>
+                    <select name="filterOption" id="">
+                        <option value="">--Please choose an option--</option>
+                        {
+                            categoryProduct.map(index=>{
+                                return(
+                                    <option value={index}>{index}</option>
+                                )
+                            })
+                        }
+                    </select>
+                </span>
+            </div>
+        </div>
+    )
+}
 function NavigationFooter(props){
-    const [linkPage,setLinkPage]=useState(props.listLinkPage);
+    const [LinkPage,setLinkPage]=useState(props.listProduct);
 
     return(
         <nav className="navigationFooter">
-            <ul className="navigationListContaint">
 
+
+            <ul className="navigationListContaint">
+                <li className="leftPageProduct">
+                    <a href="#"><i class="bi bi-arrow-left"></i></a>
+                </li>
+                {LinkPage.map(index=>{
+                    return(<li>
+                                <a href="#">{index}</a>
+                            </li>)
+                })}
+
+                <li className="rightPageProduct">
+                    <a href="#"><i class="bi bi-arrow-right"></i></a>
+                </li>
             </ul>
+
+            <span className="rightPageProduct">
+                -
+            </span>
         </nav>
     )
 }
@@ -66,6 +108,8 @@ function ListItemProductContainer(props){
     return(
         <div className="listItemProductContainer">
             <div className="containt">
+                <FeatureOptionHeader listNumberFunction={ListProduct}/>
+
                 <ul className="listProduct">
                     {ListProduct.map(index=>{
                         return(<ProductItem/>);

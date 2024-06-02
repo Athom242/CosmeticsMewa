@@ -46,8 +46,8 @@ function ContaintTable(props){
         let list = [];
         
         list.push((props.itemsProductData.map(index=>{
-            // totalPriceInitValue+=index.price;
-            return({idProductType:index.idProductType,countProduct:1,price:index.price,subTotalPrice:index.price});
+            // totalPriceInitValue+=index.price.current;
+            return({idProductType:index.idProductType,countProduct:1,price:index.price.current,subTotalPrice:index.price.current});
         })));
 
         return list;
@@ -70,6 +70,7 @@ function ContaintTable(props){
     const handleChangeCount=(event)=>{
         const target=event.currentTarget;
         const parentRoot=target.parentElement.parentElement.parentElement; 
+        const decimalNumber=3;
         
         
         // const index
@@ -103,9 +104,9 @@ function ContaintTable(props){
                 console.log("Aucune valuer ne corresponds");
         }
 
-        copyItemProduct[index].subTotalPrice=Math.ceil(copyItemProduct[index].countProduct*copyItemProduct[index].price);
+        copyItemProduct[index].subTotalPrice=parseFloat((copyItemProduct[index].countProduct*copyItemProduct[index].price).toFixed(decimalNumber));
         setItemsProduct(copyItemProduct);
-        setTotalPrice(Math.ceil(subTotalPriceFunction(copyItemProduct)));
+        setTotalPrice(parseFloat((subTotalPriceFunction(copyItemProduct)).toFixed(decimalNumber)));
 
         console.log(copyItemProduct[index]);
         console.log(copyItemProduct);

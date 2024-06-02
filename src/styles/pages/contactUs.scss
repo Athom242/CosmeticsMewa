@@ -1,0 +1,25 @@
+.sectionListContactLink{
+    background: orangered;
+    height: 100%;
+    padding: 8rem 0px;
+    .containt{
+        width: $widthSectionBrand;
+        margin: 0px auto;
+    }
+
+    .listContact{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        // margin: 8rem auto;
+
+        
+
+        li{
+            margin: 1rem;
+            text-align: center;
+        }
+    }
+}
