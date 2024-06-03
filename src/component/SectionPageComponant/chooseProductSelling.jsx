@@ -32,6 +32,7 @@ function FeatureProduct(props){
 function ProductItem(props){
     const price=Math.ceil(Math.random()*10);
     const priceLast=Math.ceil(Math.random()*10);
+    console.log("Bonjour tout le monde je suis dans le monde");
     return(
         <div className="productItem">
             <div className="productItemContainer">
