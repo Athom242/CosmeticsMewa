@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/CosmeticsMewa/static/css/main.4bd9ca9f.css",
-    "main.js": "/CosmeticsMewa/static/js/main.51655d00.js",
+    "main.js": "/CosmeticsMewa/static/js/main.52bac3ab.js",
     "static/js/453.bd39b796.chunk.js": "/CosmeticsMewa/static/js/453.bd39b796.chunk.js",
     "static/media/backgroundImageMaquillageBosses.jpg": "/CosmeticsMewa/static/media/backgroundImageMaquillageBosses.3c0ad88807179713a75c.jpg",
     "static/media/sliderRight.png": "/CosmeticsMewa/static/media/sliderRight.6c432720d31bd8347493.png",
@@ -15,11 +15,11 @@
     "static/media/logo.svg": "/CosmeticsMewa/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/CosmeticsMewa/index.html",
     "main.4bd9ca9f.css.map": "/CosmeticsMewa/static/css/main.4bd9ca9f.css.map",
-    "main.51655d00.js.map": "/CosmeticsMewa/static/js/main.51655d00.js.map",
+    "main.52bac3ab.js.map": "/CosmeticsMewa/static/js/main.52bac3ab.js.map",
     "453.bd39b796.chunk.js.map": "/CosmeticsMewa/static/js/453.bd39b796.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4bd9ca9f.css",
-    "static/js/main.51655d00.js"
+    "static/js/main.52bac3ab.js"
   ]
 }
