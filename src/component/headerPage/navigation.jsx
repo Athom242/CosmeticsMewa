@@ -1,21 +1,30 @@
-import { forwardRef, useRef } from "react";
+import { React,forwardRef, useContext, useRef, useState } from "react";
 import { BrandCenterItem } from "../brand";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { PageContainerAction } from "../ActionMethod/pageaction";
+import dataHeaderBrandImage from "../../data/dataProduct/dataImage";
+import { ListProductChoice, cacheListProduct, handleCacheListProduct } from "../ActionMethod/contextData";
 
 
-export default function Header(props){
+export default function Header({headerBrandDisplay}){
+    // {headerBrandDisplay,productChoiceList}
+    // const [productChoiceList,setProductList]
+
+    console.log("Header Section");
     return(
         <header className="container-fluid border border-dark">
-            <Navigation/>
-           
-            {props.headerBrandDisplay?<HeaderBrand/>:false}
+                <Navigation/>
+            {headerBrandDisplay?<HeaderBrand/>:false}
         </header>
     )
 }
 
 
 export function HeaderBrand(props){
+    
+    // const images = importAll(require.context('../../media', false, /\.(png|jpe?g|svg)$/));
+    // console.log(images);
+
     return(
         <div className="headerBrand">
             <div className="headerBrandContaint">
@@ -24,11 +33,15 @@ export function HeaderBrand(props){
                         <div className="leftAction"><i class="bi bi-arrow-left-square"></i></div>
                         <div className="rightAction"><i class="bi bi-arrow-right-square"></i></div>
                     </div>
-                    
+                    <div>
+                         
+                    </div>
                     <div className="brandCenter">
-                       <BrandCenterItem/>
-                       <BrandCenterItem/>
-                       <BrandCenterItem/>
+                        
+
+                        {dataHeaderBrandImage.headerImageProduct.map(index=>{
+                            return <BrandCenterItem InfoData={index}/>
+                        })}
 
                     </div>
                 </div>
@@ -45,10 +58,30 @@ export function HeaderBrand(props){
 
 
 
-export function Navigation(props){
+
+export function Navigation({handleChangeProductChoiceList}){
+    /**
+     * productChoiceList -> Liste des produit choisie dans le site internet 
+     * {productChoiceList,handleChangeProductChoiceList}
+     * 
+     */
+
+    // const fichier =useContext(ListProductChoice)
+    const productList=useContext(ListProductChoice);
+    // const productList
+    // const setProductList;
+
     const subNavigationRef=useRef(null);
     const linkRef=useRef(null);
     const linkPageContainerRef=useRef(null);
+
+    const numberProductChoice=()=>{
+        console.log('numberProductChoice',productList)
+        return productList.length;
+    }
+
+
+    console.log('Navigation',productList);
 
 
     const handleDisplaySubNav=(event)=>{
@@ -76,13 +109,42 @@ export function Navigation(props){
 
     }
 
+    const handleHoverShopLink=(check)=>{
+        if (check){
+            return (event)=>{
+                const current=event.currentTarget;
+                const target=current.querySelectorAll(".linkItemList")[0];
+
+
+                current.classList.toggle("active");
+                console.log(current,"Entrer ->");
+            }
+        }
+        return (event)=>{
+            const current=event.currentTarget;
+            const target=current.querySelectorAll(".linkItemList")[0];
+
+            current.classList.toggle("active");
+            console.log(current,"Sortie <-");
+        }
+
+    }
+
+    const handleCacheProduct=(event)=>{
+        console.log("La valeur est bien transmise");
+        
+        handleCacheListProduct(productList);
+        console.log(cacheListProduct);
+    }
+
     return(
         <nav className="navigation">
             <PageContainerAction display={linkRef} ref={linkPageContainerRef}/>
+
             <div className="navigationContaint">
                 <div class="leftRight">
                     <li>
-                        <a href="#" onClick={handleDisplaySubNav} id="menuNavigation"><i class="bi bi-list"></i></a>
+                        <Link href="#" onClick={handleDisplaySubNav} id="menuNavigation"><i class="bi bi-list"></i></Link>
                         <SubNavigation ref={subNavigationRef}/>
                     </li>
 
@@ -92,7 +154,7 @@ export function Navigation(props){
                 </div>
 
                 <div className="navBrandHeader">
-                    <a href="/">Mewa Cosmetics</a>
+                    <Link to="/">Mewa Cosmetics</Link>
                 </div>
 
                 <div className="navRight">
@@ -100,11 +162,21 @@ export function Navigation(props){
                         <form action="#" className="searchForm">
                             <input type="search" name="" id="" />
                         </form>
-                        <a href="#" onClick={handleDisplayPageAction} id="search" ref={linkRef}><i class="bi bi-search"></i></a>
+                        <Link to="#" onClick={handleDisplayPageAction} id="search" ref={linkRef}><i class="bi bi-search"></i></Link>
                     </li>
 
-                    <li id="shopListProduct">
-                        <Link to="/shopPageAction"  id="shop" ref={linkRef}><i class="bi bi-cart4"></i></Link>
+                    <li id="shopListProduct" onMouseEnter={handleHoverShopLink(true)} onMouseLeave={handleHoverShopLink(false)}>
+                        <Link to="/shopPageAction"  id="shop" ref={linkRef} onClick={handleCacheProduct}><i class="bi bi-cart4"></i><span className="productNumber">{numberProductChoice()}</span></Link>
+                        <div className="linkItemList">
+                            {/* Affichage des produit déjà sélectionné */}
+                            {productList.map((index,keys)=>{
+                                return(<div key={keys} className="productItemChoiceShop"><Link to={""} className="linkProductItemChoice" >{index}</Link></div>)
+                            })}
+
+                            
+                            <div className="productItemChoiceShop"><Link  className="linkProductItemChoice" to={""}>UPDATE</Link></div>
+                        </div>
+                        
                     </li>
                 </div>
             </div>
@@ -113,9 +185,19 @@ export function Navigation(props){
     )
 }
 
+<<<<<<< Updated upstream
 const  SubNavigation=forwardRef((props,ref)=>{
     const ListObjectLink=["Acceuil","Shop","Contact-Nous","Fichier","A-props"];
+=======
+>>>>>>> Stashed changes
 
+const  SubNavigation=forwardRef((props,ref)=>{
+    const ListObjectLink=[{name:"Acceuil",link:"/"},{name:"Shop",link:"/shop"},{name:"Contact-Nous",link:"/contactUs"},{name:"Fichier",link:"/fichier"},{name:"A-props",link:"/aboutUs"}];
+
+
+    const currentListProductChoice=useContext(ListProductChoice);
+    
+    
     const handleLinkDisplay=(event)=>{
         //action apres appuyer sur lien du navigateur
         const link=event.currentTarget;
@@ -129,8 +211,19 @@ const  SubNavigation=forwardRef((props,ref)=>{
 
         // linkFeature.style.transform="translate"
         // linkFeature.style.transform="translateX("+linkFeature.offsetLeft+"px)";
+
         console.log(link.id);
         console.log(linkFeature);
+    };
+
+    const handlePrevValueGloval=(event)=>{
+        console.log("fichier dans le monde");
+        // console.log(currentListProductChoice);
+
+        handleCacheListProduct(currentListProductChoice);
+
+        console.log(cacheListProduct);
+        
     };
 
     return(
@@ -138,7 +231,11 @@ const  SubNavigation=forwardRef((props,ref)=>{
             <div className="containt">
                 <div className="menuLink">
                     {ListObjectLink.map(index=>{
+<<<<<<< Updated upstream
                         return(<div className="menuLinkItem"><a href="#" id={index.toLowerCase()} onMouseEnter={handleLinkDisplay}>{index}</a></div>)
+=======
+                        return(<div className="menuLinkItem"><Link to={index.link} onClick={handlePrevValueGloval} id={index.name.toLowerCase()} onMouseEnter={handleLinkDisplay}>{index.name}</Link></div>)
+>>>>>>> Stashed changes
                     })}
                 </div>
 
@@ -155,6 +252,7 @@ const  SubNavigation=forwardRef((props,ref)=>{
 });
 
 function SubNavigationItem(props){
+
     const handlePosElement=(event)=>{
         // const linkPlace=document.getElementsByClassName
         const posElt=event.currentTarget;

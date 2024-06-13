@@ -1,12 +1,28 @@
-import { useState } from "react"
-import Footer from "../component/Footer/footer"
-import { ProductItem } from "../component/SectionPageComponant/chooseProductSelling"
-import Header from "../component/headerPage/navigation"
-import { HeaderTitle } from "./shopPageAction"
+import { useEffect, useState } from "react";
+import Footer from "../component/Footer/footer";
+import { ProductItem } from "../component/SectionPageComponant/chooseProductSelling";
+import Header from "../component/headerPage/navigation";
+import { HeaderTitle } from "./shopPageAction";
+import bcgImage from "../media/backgroundImageBeauty.jpg";
+import { ListProductChoice, cacheListProduct } from "../component/ActionMethod/contextData";
+
+// ----------------Information data 
+
+import dataProduct from "../data/dataProduct/dataItem";
 
 function FeatureOptionHeader(props){
     const [listNumberFunction,setListNumberFunction]=useState(props.listNumberFunction);
     const categoryProduct=["Fichier","Contact","Image"];
+    const [numberPerPage,setNumberPerPage]=useState(10);
+
+    const listNumber=() => {
+        let pageArray=[];
+        for (let start = 10; start <= numberPerPage**2; start+=numberPerPage) {
+            pageArray.push(<option value={start}>{start}</option>);
+        }
+
+        return pageArray;
+    }
 
     const [counterProduct,setCounterProduct]=useState(listNumberFunction.length);
 
@@ -24,6 +40,7 @@ function FeatureOptionHeader(props){
     return(
         <div className="featureOptionHeader">
             <div className="showProductNumber">
+<<<<<<< Updated upstream
                 <div className="filterDisplayInfo">
                     <span>SHOWING 1-{counterProduct} OF {counterProduct} RESULTS</span>
                 </div>
@@ -51,13 +68,43 @@ function FeatureOptionHeader(props){
                     </span>
                 </div>
         
+=======
+                <span>SHOWING 1-{number} OF {number} RESULTS</span>
+                <span>
+                    <select name="filterOption" id="">
+                        <option value="">--Please choose an option--</option>
+                        {
+                            categoryProduct.map(index=>{
+                                return(
+                                    <option value={index}>{index}</option>
+                                )
+                            })
+                        }
+                    </select>
+
+                    <select name="filterProductPerPage" id="">
+                        {listNumber().map(index=>{
+                            return(index);
+                            })}
+                    </select>
+                </span>
+>>>>>>> Stashed changes
             </div>
         </div>
     )
 }
+<<<<<<< Updated upstream
 function NavigationFooter({listProduct,nbrepageRender}){
     // const [LinkPage,setLinkPage]=useState(props.listProduct);
     
+=======
+function NavigationFooter({props,listProduct}){
+    const [LinkPage,setLinkPage]=useState(listProduct);
+    const [currentPage,setCurrentPage]=useState({current:LinkPage[0],index:0})
+    const handleForward=()=>{
+        
+    }
+>>>>>>> Stashed changes
 
     return(
         <nav className="navigationFooter">
@@ -67,10 +114,15 @@ function NavigationFooter({listProduct,nbrepageRender}){
                 <li className="leftPageProduct">
                     <a href="#"><i class="bi bi-arrow-left"></i></a>
                 </li>
+<<<<<<< Updated upstream
                 {listProduct.map(index=>{
                     return(<li>
                                 <a href="#">{index}</a>
                             </li>)
+=======
+                {LinkPage.map(index=>{
+                    return(<li><a href="#">{index}</a></li>)
+>>>>>>> Stashed changes
                 })}
 
                 <li className="rightPageProduct">
@@ -197,6 +249,7 @@ function FeatureListProduct(props){
     )
 }
 
+<<<<<<< Updated upstream
 function ListItemProductContainer(props){
     const [ListProduct,setListProduct]=useState(props.listProduct);
     const [countProduct,setCountProduct]=useState(10);
@@ -237,16 +290,38 @@ function ListItemProductContainer(props){
                         // console.log(value,index)
                         return(<ProductItem/>)
                         
+=======
+function ListItemProductContainer({handleAddProductItem}){
+    console.log("Bonjour tout le monde",dataProduct);
+    const [listProduct,setListProduct]=useState([...dataProduct.products]);
+    const listIndexProduct=useState([0,0,0,0,0,0,0,0,0]);
+    const countProduct=10;
+
+    console.log("ListItemProductContainer",handleAddProductItem);
+    return(
+        <div className="listItemProductContainer">
+            <div className="containt">
+                <FeatureOptionHeader listNumberFunction={listProduct}/>
+
+                <ul className="listProduct">
+                    {listProduct.map(index=>{
+                        return(<ProductItem productData={index} handleAddProduct={handleAddProductItem} />);
+>>>>>>> Stashed changes
                         
                     })}
                 </ul>
 
+<<<<<<< Updated upstream
                 <NavigationFooter listProduct={ListProduct} nbrepageRender={pageRender}/>
+=======
+                <NavigationFooter listProduct={listIndexProduct}/>
+>>>>>>> Stashed changes
             </div>
         </div>
     )
 }
 export default function ShopListPage(props){
+<<<<<<< Updated upstream
     const [listItemProductContainer,setListItemProductContainer]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);//Contenant list des produits en stock
     const [listDisplayProduct,setListDisplayProduct]=useState([...listItemProductContainer]);
     const [listCategoryData,setListCategoryData]=useState([]); //Tableau contentant list objet category avec nom et identifiant de la category
@@ -257,18 +332,66 @@ export default function ShopListPage(props){
         const target=event.currentTarget;
         console.log(target);
     }
+=======
+    const headerStyleValue={
+        // background:"url",
+        padding:"7.5rem 0px",
+        backgroundImage:`url(${bcgImage})`,
+        backgroundPosition:"center",
+        backgroundRepeat:"no-repeat",
+        backgroundSize:"cover",
+
+
+    };
+
+    const [choiceProductList,setChoiceProductList]=useState(cacheListProduct.length?cacheListProduct:[]);
+    // const 
+    
+    const handleAddProductFeature=(id)=>{
+        return (event)=>{
+            event.preventDefault();
+            const arrayCopyListProduct=[...choiceProductList];
+            
+            if(!arrayCopyListProduct.find(index=>index==id)){
+                arrayCopyListProduct.push(id);
+            }
+            // arrayCopy.push(id);
+
+
+            setChoiceProductList(arrayCopyListProduct);
+            console.log(arrayCopyListProduct);
+        }
+    };
+
+    console.log("ShopListPage",handleAddProductFeature);
+    console.log("ShopListPage",choiceProductList);
+
+    useEffect(()=>{
+        console.log("La variable de fichier dans le monde ",choiceProductList);
+    },[choiceProductList]);
+
+    // const 
+>>>>>>> Stashed changes
     return(
+        <ListProductChoice.Provider value={choiceProductList}>
         <div className="shopListPage">
             <Header/>
-            <HeaderTitle title={"Shop List Page"}/>
+            <HeaderTitle title={"Shop List Page"} headerStyle={headerStyleValue} />
 
+            {/* <ListProductChoice.Provider value */}
             <div className="shopListPageContaint">
                 <div className="containt">
+<<<<<<< Updated upstream
                     <ListItemProductContainer listProduct={listDisplayProduct}/>
                     <FeatureListProduct onChange={handleChangeListFeatureOption}/>
+=======
+                    <ListItemProductContainer handleAddProductItem={handleAddProductFeature}/>
+                    <FeatureListProduct/>
+>>>>>>> Stashed changes
                 </div>
             </div>
             <Footer/>
         </div>
+        </ListProductChoice.Provider>
     )
 }
