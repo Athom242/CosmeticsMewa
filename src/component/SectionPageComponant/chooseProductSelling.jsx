@@ -18,15 +18,6 @@ function FeatureProduct({handleAddListShop,handleViewDetail}){
             </ul>
         </div>
     )
-<<<<<<< Updated upstream
-}
-function ProductItem(props){
-    const price=Math.ceil(Math.random()*10);
-    const priceLast=Math.ceil(Math.random()*10);
-    console.log("Bonjour tout le monde je suis dans le monde");
-=======
-};
-
 
 
 export function ProductItem({productData,handleAddProduct}){
