@@ -40,36 +40,7 @@ function FeatureOptionHeader(props){
     return(
         <div className="featureOptionHeader">
             <div className="showProductNumber">
-<<<<<<< Updated upstream
-                <div className="filterDisplayInfo">
-                    <span>SHOWING 1-{counterProduct} OF {counterProduct} RESULTS</span>
-                </div>
-                <div className="filterFeature">
-                    <span className="filterDisplayNumberProduct">
-                        <label htmlFor="filterDisplayNumberProduct">Nombre de voyage</label>
-                        <select name="filterDisplayNumberProduct" id="filterDisplayNumberProduct" onChange={props.onChangePerPage}>
-                            {[10,20,30,40,50,60,70,80,90,100].map(index=>{
-                                return(<option value={index}>{index}</option>)
-                            })}
-                            
-                        </select>
-                    </span>
-                    <span>
-                        <select name="filterCategoryOption" id="" >
-                            <option value="">--Please choose an option--</option>
-                            {
-                                categoryProduct.map(index=>{
-                                    return(
-                                        <option value={index}>{index}</option>
-                                    )
-                                })
-                            }
-                        </select>
-                    </span>
-                </div>
-        
-=======
-                <span>SHOWING 1-{number} OF {number} RESULTS</span>
+                <span>SHOWING 1-{counterProduct} OF {counterProduct} RESULTS</span>
                 <span>
                     <select name="filterOption" id="">
                         <option value="">--Please choose an option--</option>
@@ -88,23 +59,16 @@ function FeatureOptionHeader(props){
                             })}
                     </select>
                 </span>
->>>>>>> Stashed changes
             </div>
         </div>
     )
 }
-<<<<<<< Updated upstream
-function NavigationFooter({listProduct,nbrepageRender}){
-    // const [LinkPage,setLinkPage]=useState(props.listProduct);
-    
-=======
 function NavigationFooter({props,listProduct}){
     const [LinkPage,setLinkPage]=useState(listProduct);
     const [currentPage,setCurrentPage]=useState({current:LinkPage[0],index:0})
     const handleForward=()=>{
         
     }
->>>>>>> Stashed changes
 
     return(
         <nav className="navigationFooter">
@@ -114,15 +78,8 @@ function NavigationFooter({props,listProduct}){
                 <li className="leftPageProduct">
                     <a href="#"><i class="bi bi-arrow-left"></i></a>
                 </li>
-<<<<<<< Updated upstream
-                {listProduct.map(index=>{
-                    return(<li>
-                                <a href="#">{index}</a>
-                            </li>)
-=======
                 {LinkPage.map(index=>{
                     return(<li><a href="#">{index}</a></li>)
->>>>>>> Stashed changes
                 })}
 
                 <li className="rightPageProduct">
@@ -249,48 +206,6 @@ function FeatureListProduct(props){
     )
 }
 
-<<<<<<< Updated upstream
-function ListItemProductContainer(props){
-    const [ListProduct,setListProduct]=useState(props.listProduct);
-    const [countProduct,setCountProduct]=useState(10);
-    const [pageRender,setPageRender]=useState({count:Math.ceil(ListProduct.length/countProduct),current:1});
-    const [indexPage,setIndexPage]=useState({start:0,end:countProduct})
-
-    const handleChangeOptionRender=(event)=>{
-
-    };
-
-    function handleDisplayPerPage(event){
-        const target=event.currentTarget;
-        const listProductCopy=[...ListProduct];
-
-        listProductCopy.slice(indexPage.start,indexPage.end);
-        console.log(indexPage.end);
-
-
-
-        // setCountProduct(target.value);
-        // console.log();
-
-
-        setCountProduct(parseInt(target.value));
-        setListProduct([...listProductCopy]);
-      
-
-        console.log(countProduct,pageRender,indexPage,listProductCopy);
-    }
-
-    return(
-        <div className="listItemProductContainer">
-            <div className="containt">
-                <FeatureOptionHeader listNumberFunction={ListProduct} onChangePerPage={handleDisplayPerPage}/>
-
-                <ul className="listProduct">
-                    {ListProduct.map((value,index)=>{
-                        // console.log(value,index)
-                        return(<ProductItem/>)
-                        
-=======
 function ListItemProductContainer({handleAddProductItem}){
     console.log("Bonjour tout le monde",dataProduct);
     const [listProduct,setListProduct]=useState([...dataProduct.products]);
@@ -306,33 +221,16 @@ function ListItemProductContainer({handleAddProductItem}){
                 <ul className="listProduct">
                     {listProduct.map(index=>{
                         return(<ProductItem productData={index} handleAddProduct={handleAddProductItem} />);
->>>>>>> Stashed changes
                         
                     })}
                 </ul>
 
-<<<<<<< Updated upstream
-                <NavigationFooter listProduct={ListProduct} nbrepageRender={pageRender}/>
-=======
                 <NavigationFooter listProduct={listIndexProduct}/>
->>>>>>> Stashed changes
             </div>
         </div>
     )
 }
 export default function ShopListPage(props){
-<<<<<<< Updated upstream
-    const [listItemProductContainer,setListItemProductContainer]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);//Contenant list des produits en stock
-    const [listDisplayProduct,setListDisplayProduct]=useState([...listItemProductContainer]);
-    const [listCategoryData,setListCategoryData]=useState([]); //Tableau contentant list objet category avec nom et identifiant de la category
-
-
-
-    const handleChangeListFeatureOption=(event)=>{
-        const target=event.currentTarget;
-        console.log(target);
-    }
-=======
     const headerStyleValue={
         // background:"url",
         padding:"7.5rem 0px",
@@ -371,7 +269,6 @@ export default function ShopListPage(props){
     },[choiceProductList]);
 
     // const 
->>>>>>> Stashed changes
     return(
         <ListProductChoice.Provider value={choiceProductList}>
         <div className="shopListPage">
@@ -381,13 +278,8 @@ export default function ShopListPage(props){
             {/* <ListProductChoice.Provider value */}
             <div className="shopListPageContaint">
                 <div className="containt">
-<<<<<<< Updated upstream
-                    <ListItemProductContainer listProduct={listDisplayProduct}/>
-                    <FeatureListProduct onChange={handleChangeListFeatureOption}/>
-=======
                     <ListItemProductContainer handleAddProductItem={handleAddProductFeature}/>
                     <FeatureListProduct/>
->>>>>>> Stashed changes
                 </div>
             </div>
             <Footer/>

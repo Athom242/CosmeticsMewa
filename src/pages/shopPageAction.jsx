@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import Header from "../component/headerPage/navigation";
 import Footer from "../component/Footer/footer";
 import { Link } from "react-router-dom";
 
-<<<<<<< Updated upstream
-=======
+
 
 //--------------------data Product----------
 import dataProduct from "../data/dataProduct/dataItem";
 import { ListProductChoice, cacheListProduct } from "../component/ActionMethod/contextData";
 
->>>>>>> Stashed changes
 // import { Footer, Header } from "./home";
 function EmptyShop(props){
     return(
@@ -24,10 +22,6 @@ function EmptyShop(props){
     )
 }
 
-<<<<<<< Updated upstream
-
-function ContaintTable(props){
-=======
 export function ButtonCount(props){
     // const [value,setValue]=useState(props.value);
     /**
@@ -191,54 +185,43 @@ function ContaintTable({props,itemsProductData}){
             // itemsProducts.findIndex()
     }}
 
->>>>>>> Stashed changes
     return(
-        <table>
-        <thead></thead>
-        <tbody>
+        <>
+            <table>
 
-<<<<<<< Updated upstream
-        </tbody>
-        <tfoot>
-            Bonjour tout le monde
-        </tfoot>
-    </table>
-    )
-}
 
-export default function ShopPageAction(props){
-    const [itemProduct,setItemProduct]=useState([]);
-=======
-            <thead>
-                <tr>
-                    {listHeaderTable.map(index=>{
-                        return(<td>{index}</td>)
+                <thead>
+                    <tr>
+                        {listHeaderTable.map(index=>{
+                            return(<td>{index}</td>)
+                        })}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {itemsProducts.map(index=>{
+                        return(
+                            <tr id={index.idProductType} key={index.idProductType}>
+                                <td><span className="removeProduct" onClick={handleRemoveListProduct(index.idProductType)}><i class="bi bi-trash"></i></span> <div className="productProfile"><span>{index.idProductType}</span></div></td>
+                                <td><div className="price"><span className="device">$</span><span>{index.price}</span></div></td>
+                                <td><ButtonCount value={index.countProduct} onChange={handleChangeCount}/></td>
+                                <td><div className="priceSubTotal"><span className="device">$</span><span className="total" ref={itemRef}>{index.subTotalPrice}</span></div></td>
+                            </tr>
+                        )
                     })}
-                </tr>
-            </thead>
-
-            <tbody>
-                {itemsProducts.map(index=>{
-                    return(
-                        <tr id={index.idProductType} key={index.idProductType}>
-                            <td><span className="removeProduct" onClick={handleRemoveListProduct(index.idProductType)}><i class="bi bi-trash"></i></span> <div className="productProfile"><span>{index.idProductType}</span></div></td>
-                            <td><div className="price"><span className="device">$</span><span>{index.price}</span></div></td>
-                            <td><ButtonCount value={index.countProduct} onChange={handleChangeCount}/></td>
-                            <td><div className="priceSubTotal"><span className="device">$</span><span className="total" ref={itemRef}>{index.subTotalPrice}</span></div></td>
-                        </tr>
-                    )
-                })}
 
 
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colSpan={listHeaderTable.length-1}>Total de facture</td><td colSpan={1}><span className="devise">$</span><span className="mounTotal">{totalPrice}</span></td>
-                </tr>
-            </tfoot>
+                </tbody>
+                
+                <tfoot>
+                    <tr>
+                        <td colSpan={listHeaderTable.length-1}>Total de facture</td><td colSpan={1}><span className="devise">$</span><span className="mounTotal">{totalPrice}</span></td>
+                    </tr>
+                </tfoot>
 
             </table>
-                <div className="linkFeature">
+
+            <div className="linkFeature">
                 <Link className="linkFeatureAction" to={"./"}>UPDATE CART</Link>
             </div>
 
@@ -272,8 +255,6 @@ export default function ShopPageAction(props){
                     </tr>
                 </tfoot>
             </table>
-
-
         </>
     )
 }
@@ -299,7 +280,6 @@ export default function ShopPageAction({dataProduct}){
     const handleListChange=()=>{
 
     }
->>>>>>> Stashed changes
 
     return(
         <ListProductChoice.Provider value={choiceProductList}>
@@ -314,11 +294,7 @@ export default function ShopPageAction({dataProduct}){
             <div className="shopPageContaint">
 
                 <div className="containt">
-<<<<<<< Updated upstream
-                    {itemProduct.length?<ContaintTable/>:<EmptyShop/>}
-=======
                     {choiceProductList.length?<ContaintTable itemsProductData={choiceProductList} onChange={handleListChange}/>:<EmptyShop/>}
->>>>>>> Stashed changes
                 </div>
                 
             </div>

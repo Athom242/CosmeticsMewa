@@ -18,6 +18,7 @@ function FeatureProduct({handleAddListShop,handleViewDetail}){
             </ul>
         </div>
     )
+}
 
 
 export function ProductItem({productData,handleAddProduct}){
@@ -50,7 +51,7 @@ export function ProductItem({productData,handleAddProduct}){
         }
     }
 
->>>>>>> Stashed changes
+// >>>>>>> Stashed changes
     return(
         <div className="productItem" onClick={clickEvent} style={{cursor:"pointer"}}>
             <div className="productItemContainer">

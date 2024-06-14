@@ -12,19 +12,7 @@ import ShopPageAction from './pages/shopPageAction';
 function App() {
   return (
     <div id="App">
-<<<<<<< Updated upstream
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home/>}/>
-
-          <Route path='/home' element={<Home/>}/>
-          <Route path='/shopPageAction' element={<ShopPageAction/>}/>
-          {/* <Route/> */}
-        </Routes>
-      </BrowserRouter>
-=======
         <Home/>
->>>>>>> Stashed changes
     </div>
   );
 }

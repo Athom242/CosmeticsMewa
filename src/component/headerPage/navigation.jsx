@@ -185,11 +185,6 @@ export function Navigation({handleChangeProductChoiceList}){
     )
 }
 
-<<<<<<< Updated upstream
-const  SubNavigation=forwardRef((props,ref)=>{
-    const ListObjectLink=["Acceuil","Shop","Contact-Nous","Fichier","A-props"];
-=======
->>>>>>> Stashed changes
 
 const  SubNavigation=forwardRef((props,ref)=>{
     const ListObjectLink=[{name:"Acceuil",link:"/"},{name:"Shop",link:"/shop"},{name:"Contact-Nous",link:"/contactUs"},{name:"Fichier",link:"/fichier"},{name:"A-props",link:"/aboutUs"}];
@@ -231,11 +226,7 @@ const  SubNavigation=forwardRef((props,ref)=>{
             <div className="containt">
                 <div className="menuLink">
                     {ListObjectLink.map(index=>{
-<<<<<<< Updated upstream
-                        return(<div className="menuLinkItem"><a href="#" id={index.toLowerCase()} onMouseEnter={handleLinkDisplay}>{index}</a></div>)
-=======
                         return(<div className="menuLinkItem"><Link to={index.link} onClick={handlePrevValueGloval} id={index.name.toLowerCase()} onMouseEnter={handleLinkDisplay}>{index.name}</Link></div>)
->>>>>>> Stashed changes
                     })}
                 </div>
 
@@ -251,8 +242,10 @@ const  SubNavigation=forwardRef((props,ref)=>{
     )
 });
 
-function SubNavigationItem(props){
+function SubNavigationItem({props,forLink}){
 
+    const [linkInfo,setLinkInfo]=useState(forLink);
+    
     const handlePosElement=(event)=>{
         // const linkPlace=document.getElementsByClassName
         const posElt=event.currentTarget;
@@ -269,9 +262,9 @@ function SubNavigationItem(props){
         console.log(posElt.offsetLeft);
     }
     return(
-        <div className="subNavigationItem" id={props.forLink.toLowerCase()+"NavigationItem"} onClick={handlePosElement}>
+        <div className="subNavigationItem" id={linkInfo.name.toLowerCase()+"NavigationItem"} onClick={handlePosElement}>
             <div className="containt">
-                <h1>{props.forLink}</h1>
+                <h1>{linkInfo.name}</h1>
             </div>
         </div>
     )
