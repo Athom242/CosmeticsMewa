@@ -6,6 +6,11 @@
     .header{
 
     }
+    .containtInner{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 
     .containt{
         width: calc($widthSectionBrand* .95);
@@ -24,12 +29,35 @@
         width: 100%;
 
         @include border;
+
+
     }
 
     .testimonialListInner{
+        display: flex;
+        align-items: center;
+        // width: 150%;
+
+
+        .buttonCarroucell{
+            button{
+                padding: .5rem 1rem;
+                margin: 1rem;
+            }
+        }
+
+        .containtTestimonial{
+            display: flex;
+            flex-direction: row;
+            width:100%;
+
+            overflow-x: scroll;
+
+            // align-items: center
+        }
         @include border;
         @include flex;
-        width: 50%;
+        width: 60%;
 
         border-color: red;
         margin: 0px auto;

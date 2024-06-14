@@ -33,8 +33,11 @@ export function ProductItem({productData,handleAddProduct}){
     const [productItemData,setProductItemData]=useState(productData);
 
 
-    const clickEvent=(event)=>{
-        console.log("Bonjour tout le monde");
+    const handleViewDetailShop=(id)=>{
+        // console.log("Bonjour tout le monde");
+        return (event)=>{
+            console.log("Vous avez choisi le produit =>",id);
+        }
     };
     console.log('ProductItem',handleAddProduct);
 
@@ -53,7 +56,7 @@ export function ProductItem({productData,handleAddProduct}){
 
 // >>>>>>> Stashed changes
     return(
-        <div className="productItem" onClick={clickEvent} style={{cursor:"pointer"}}>
+        <div className="productItem" onClick={handleViewDetailShop(productItemData.idProductType)} style={{cursor:"pointer"}}>
             <div className="productItemContainer">
                 <div className="imgProduct">
                     <div className="state"><span>space</span></div>
