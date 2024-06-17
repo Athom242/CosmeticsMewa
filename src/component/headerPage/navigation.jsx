@@ -245,7 +245,8 @@ const  SubNavigation=forwardRef((props,ref)=>{
 function SubNavigationItem({props,forLink}){
 
     const [linkInfo,setLinkInfo]=useState(forLink);
-    
+    console.log("LinkInfo",linkInfo);
+
     const handlePosElement=(event)=>{
         // const linkPlace=document.getElementsByClassName
         const posElt=event.currentTarget;
@@ -262,7 +263,7 @@ function SubNavigationItem({props,forLink}){
         console.log(posElt.offsetLeft);
     }
     return(
-        <div className="subNavigationItem" id={linkInfo.name.toLowerCase()+"NavigationItem"} onClick={handlePosElement}>
+        <div className="subNavigationItem" id={linkInfo.toLowerCase()+"NavigationItem"} onClick={handlePosElement}>
             <div className="containt">
                 <h1>{linkInfo.name}</h1>
             </div>

@@ -150,27 +150,27 @@ function ViewDetailProduct({infoDataProduct}){
     )
 }
 
-export default function ChooseProductSelling({handleAddProduct}){
-    // const [productItemData,setProductItemData]=useState(productData);
-    const [listProduct,setListProduct]=useState([...dataProduct.products]);
+// export default function ChooseProductSelling({handleAddProduct}){
+//     // const [productItemData,setProductItemData]=useState(productData);
+//     const [listProduct,setListProduct]=useState([...dataProduct.products]);
 
-    return(
-        <div className="sectionChooseProductSelling">
-            <div className="containt">
-                <div className="header">
-                    <h2 className="title">Find Your Beauty Match</h2>
-                    <h4 className="shortDescr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, nisi.</h4>
-                </div>
-                <div className="productContainer">
-                    {listProduct.map(index=>{
-                        return(<ProductItem productData={index} handleAddProduct={handleAddProduct}/>)
-                    })}
-                </div>
+//     return(
+//         <div className="sectionChooseProductSelling">
+//             <div className="containt">
+//                 <div className="header">
+//                     <h2 className="title">Find Your Beauty Match</h2>
+//                     <h4 className="shortDescr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, nisi.</h4>
+//                 </div>
+//                 <div className="productContainer">
+//                     {listProduct.map(index=>{
+//                         return(<ProductItem productData={index} handleAddProduct={handleAddProduct}/>)
+//                     })}
+//                 </div>
 
-            </div>
-        </div>
-    )
-};
+//             </div>
+//         </div>
+//     )
+// };
 
 export default function ChooseProductSelling({handleAddProduct}){
     // const [productItemData,setProductItemData]=useState(productData);
