@@ -10,6 +10,7 @@ import ShopListPage from './pages/shopListPages';
 import ContactPage from './pages/contact';
 
 import dataProduct from "./data/dataProduct/dataItem"
+import ProductDetailPage from './pages/shopProductDetailPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const [dataProductChoice,setDataProductChoice]=useState([]);
@@ -45,6 +46,7 @@ root.render(
         <Route path="/home" element={<App />} />
         <Route path="/shopPageAction" element={<ShopPageAction onhandleAddProduct={handleProductChoice}/>} />
         <Route path="/shop" element={<ShopListPage />} />
+        <Route path='/shopProductDetailPage/:idProductItem' element={<ProductDetailPage/>}/>
         <Route path="/contactUs" element={<ContactPage />} />
       </Routes>
     </Router>

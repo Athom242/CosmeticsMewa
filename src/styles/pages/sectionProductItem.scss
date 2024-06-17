@@ -41,6 +41,11 @@ $topCoverProduct25:25;
     @include flex;
     flex-shrink: 0;
     // flex-direction: column;
+
+    .productOutContaintLinkGet{
+        width: 100%;
+        display: inline;
+    }
     .productItemContainer{
         
         @include border;

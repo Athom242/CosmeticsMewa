@@ -22,7 +22,7 @@ function EmptyShop(props){
     )
 }
 
-export function ButtonCount(props){
+export function ButtonCount({value,onChange}){
     // const [value,setValue]=useState(props.value);
     /**
      * Boutton de decompte du nombre de produit selectionner
@@ -30,9 +30,9 @@ export function ButtonCount(props){
 
     return(
         <span className="buttonCount">
-            <span className="left" onClick={props.onChange}>-</span>
-            <span className="value">{props.value}</span>
-            <span className="right" onClick={props.onChange}>+</span>
+            <span className="left" onClick={onChange}>-</span>
+            <span className="value">{value}</span>
+            <span className="right" onClick={onChange}>+</span>
         </span>
     )
 }

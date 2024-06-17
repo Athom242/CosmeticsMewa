@@ -31,7 +31,7 @@ export function ProductItem({productData,handleAddProduct}){
     // const category="Fichier dans le noir";
 
     const [productItemData,setProductItemData]=useState(productData);
-
+    const idProductType=productItemData.idProductType.split('#')[1];
 
     const handleViewDetailShop=(id)=>{
         // console.log("Bonjour tout le monde");
@@ -39,7 +39,7 @@ export function ProductItem({productData,handleAddProduct}){
             console.log("Vous avez choisi le produit =>",id);
         }
     };
-    console.log('ProductItem',handleAddProduct);
+    // console.log('ProductItem',handleAddProduct);
 
     const handleViewDetail=(id)=>{
         /**
@@ -57,37 +57,40 @@ export function ProductItem({productData,handleAddProduct}){
 // >>>>>>> Stashed changes
     return(
         <div className="productItem" onClick={handleViewDetailShop(productItemData.idProductType)} style={{cursor:"pointer"}}>
-            <div className="productItemContainer">
-                <div className="imgProduct">
-                    <div className="state"><span>space</span></div>
-                    <img src={productItemData.image[0]} alt="" />
-                    <FeatureProduct handleViewDetail={handleViewDetail(productItemData.idProductType)} handleAddListShop={handleAddProduct(productItemData.idProductType)}/>
+            <Link to={`shopProductDetailPage/${idProductType}`} className={"productOutContaintLinkGet"}>
 
-                </div>
+                <div className="productItemContainer">
+                    <div className="imgProduct">
+                        <div className="state"><span>space</span></div>
+                        <img src={productItemData.image[0]} alt="" />
+                        <FeatureProduct handleViewDetail={handleViewDetail(productItemData.idProductType)} handleAddListShop={handleAddProduct(productItemData.idProductType)}/>
 
-                <div className="bottomProductDescr">
-                    <div className="headerProduct">
-                        <div className="title">
-                            <a href="#">Lorem ipsum dolor sit amet.</a>
-                        </div>
-
-                        <div className="shortDescr">
-                            <a href="#">{productItemData.idCategory}</a>
-                        </div>
                     </div>
 
-                    <div className="price">
-                        <div className="priceLast">
-                            <span className="devise">$</span><span className="priceProduct">{productItemData.price.last}</span>
+                    <div className="bottomProductDescr">
+                        <div className="headerProduct">
+                            <div className="title">
+                                <a href="#">Lorem ipsum dolor sit amet.</a>
+                            </div>
+
+                            <div className="shortDescr">
+                                <a href="#">{productItemData.idCategory}</a>
+                            </div>
                         </div>
 
-                        <div className="priceCurrent">
-                            <span className="devise">$</span><span className="priceProduct">{productItemData.price.current}</span>
+                        <div className="price">
+                            <div className="priceLast">
+                                <span className="devise">$</span><span className="priceProduct">{productItemData.price.last}</span>
+                            </div>
+
+                            <div className="priceCurrent">
+                                <span className="devise">$</span><span className="priceProduct">{productItemData.price.current}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+                
+            </Link>
         </div>
     )
 }

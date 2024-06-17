@@ -31,9 +31,10 @@ export default {
     },
     "products":[{
         "idProductType": "#455010",
+        "nameProduct":"Lotion de toilet",
         "price": {"current":99.99,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         // "images":{
         //   "front":"...",
         //   "left":"...",
@@ -60,9 +61,10 @@ export default {
       },
       {
         "idProductType": "#455030",
+        "nameProduct":"Lotion de toilet",
         "price": {"current":1.25,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -83,9 +85,10 @@ export default {
       },
       {
         "idProductType": "#455020",
+        "nameProduct":"Lotion de toilet",
         "price": {"current":25,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -106,9 +109,11 @@ export default {
       },
       {
         "idProductType": "#455025",
+        
+        "nameProduct":"Lotion de toilet",
         "price": {"current":75,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -129,9 +134,10 @@ export default {
       },
       {
         "idProductType": "#455011",
+        "nameProduct":"Lotion de toilet",
         "price": {"current":99.99,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -152,9 +158,10 @@ export default {
       },
       {
         "idProductType": "#455035",
+        "nameProduct":"Lotion de toilet",
         "price": {"current":1.25,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -175,9 +182,10 @@ export default {
       },
       {
         "idProductType": "#455023",
+        "nameProduct":"Lotion de toilet",
         "price": {"current":25.5,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -198,9 +206,10 @@ export default {
       },
       {
         "idProductType": "#455027",
+        "nameProduct":"Lotion de toilet",
         "price": {"current":75,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -221,9 +230,10 @@ export default {
       },
       {
         "idProductType": "#302545",
+        "nameProduct":"Lotion de toilet",
         "price": {"current":75,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -244,9 +254,10 @@ export default {
       },
       {
         "idProductType": "#302544",
+        "nameProduct":"Lotion de toilet",
         "price": {"current":75,"last":0},
         "dateInput":"10/12/2004",
-        "image":[imageMap[1]],
+        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
