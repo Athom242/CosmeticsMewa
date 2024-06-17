@@ -3,28 +3,52 @@
     
     .containt{
         width:100%;
+        border: 1px solid black;
     }
 
-    .listProduct{
-        width: 100%;
-        display: flex;
-        // padding: 0px 1rem;
-        padding: 0px;
-        justify-content: space-between;
+    // .listProduct{
+    //     width: 100%;
+    //     display: flex;
+    //     // padding: 0px
+    //     padding: 0px;
+    //     justify-content: space-between;
         
 
-        flex-wrap: wrap;
+    //     flex-wrap: wrap;
 
-        .productItem{
-            width: calc(100%/3 - 1rem);
-            // margin-right: .25rem;
-            // flex-shrink: 1;
-            // width:20%;
-            // margin-right:;
+    //     .productItem{
+    //         width: calc(100%/3 - 1rem);
+    //         // margin-right: .25rem;
+    //         // flex-shrink: 1;
+    //         // width:20%;
+    //         // margin-right:;
+    //         // cursor: pointer;
 
-        }
+    //     }
+    // }
+}
+
+.listProduct{
+    width: 100%;
+    display: flex;
+    // padding: 0px
+    padding: 0px;
+    justify-content: space-between;
+    
+
+    flex-wrap: wrap;
+
+    .productItem{
+        width: calc(100%/3 - 1rem);
+        // margin-right: .25rem;
+        // flex-shrink: 1;
+        // width:20%;
+        // margin-right:;
+        // cursor: pointer;
+
     }
 }
+
 
 .shopListPage{
     &>.containt{
@@ -41,6 +65,7 @@
         margin: 4rem auto;
         display: flex;
         justify-content: space-between;
+        @include border;
     }
 }
 .featureListProduct{
@@ -85,6 +110,17 @@
             margin: 0px 1rem;
             border: 1px solid black;
 
+            color: white;
+            background: black;
+            border: .25rem solid black;
+            cursor: pointer;
+            &:hover{
+                // border-color: white;
+                background: white;
+                color: black;
+
+            }
+
         }
     }
 
@@ -117,6 +153,15 @@
         display: flex;
         justify-content: space-between;
     }
+
+    .filterFeature{
+        span{
+            margin-left: 1rem;
+            label{
+                padding-right: .25rem;
+            }
+        }
+    }
 }
 
 
@@ -128,6 +173,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    // overflow-x: scroll;
 }
 
 
@@ -138,6 +184,8 @@
     justify-content: center;
     width: 100%;
     border: 1px dashed black;
+
+    overflow-x: scroll;
 
     li{
         a{

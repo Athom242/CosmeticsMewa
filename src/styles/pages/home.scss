@@ -7,6 +7,9 @@ $fontTitle3:1.5rem;
     box-sizing: border-box;
 }
 
+ul{
+    padding: 0px;
+}
 @mixin border{
     border: 1px dashed #000000;
 }
@@ -37,6 +40,15 @@ header{
     // width: 100vw;
     // overflow: hidden
     // overflow: auto
+
+    // .navigation{
+    //     position: sticky;
+    //     top: 0px;
+    // }
+
+    // position:sticky;
+    // top: 0px;
+    // z-index: 100000;
 }
 
 .pageContainerAction{
@@ -148,6 +160,70 @@ header{
             display: flex;
             align-items: center;
             justify-content: space-between
+        }
+
+        #shopListProduct{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            z-index: 1000;
+
+            .productNumber{
+                padding: 1rem;
+                margin-left: 1rem;
+                background: black;
+                color: white;
+            }
+            
+
+            &.active{
+                background-color: black;
+                transition: .5s all;
+
+                a{
+                    color: white;
+                    // border:.1rem solid orangered;
+                    transition: .5s all;
+                }
+
+                .linkItemList{
+                    display: flex;
+                    opacity: 1;
+                    transition: .5s all;
+                }
+            }
+
+
+        }
+
+        .linkItemList{
+            display: none;
+            // display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 0px;
+
+            background-color: black;
+            opacity: 0;
+            height: calc(100%*5);
+            overflow-y: scroll;
+
+        }
+
+        .productItemChoiceShop{
+            
+            // display: flex;
+            // flex-direction: column;
+
+
+
+            .linkProductItemChoice{
+                display: inline-block;
+                border-top: 1px solid white;
+                padding:1rem 8rem;
+            }
         }
     }
 }
@@ -345,7 +421,7 @@ header{
 }
 
 .headerBrandContaint{
-    background: url("../../media/h-6-single-img-1-1.jpg");
+    background: url("../../media/HeaderBrand/h-6-single-img-1-1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -468,6 +544,17 @@ header{
             @include border;
             padding: .5rem 2rem;
 
+            border: .25rem solid black;
+            background: black;
+            color: white;
+
+            &:hover{
+                color: black;
+                border-color: black;
+                background: white;
+                transition: .25s all;
+            }
+
             // position: relative;
             // left: 25%;
 
@@ -479,7 +566,6 @@ header{
 
     .productPresContaint.reverse{
         flex-direction: row-reverse;
-
     }
 }
 
@@ -617,6 +703,12 @@ footer{
 }
 
 
+.containt{
+    .title,.shortDescr{
+        text-align: center
+    }
+}
+
 @import "./sectionFooterContainer.scss";
 @import "./sectionTestimonial.scss";
 @import "./sectionProductItem.scss";
@@ -624,4 +716,7 @@ footer{
 
 @import "./component/actionPageItem.scss";
 @import "./component/shopPageAction.scss";
+@import "./component/contactPages.scss";
+
 @import "./component/shopListProduct.scss";
+@import "./component/shopProductDetailPage.scss"

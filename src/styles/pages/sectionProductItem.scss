@@ -2,6 +2,10 @@
 
 // }
 
+
+$topCoverProduct50:50;
+$topCoverProduct25:25;
+
 @mixin flex{
     display: flex;
 }
@@ -32,24 +36,107 @@
 }
 
 .productItem{
-    width: calc(20% - .5rem);
+    width: calc(25% - .5rem);
     margin: .25rem;
     @include flex;
     flex-shrink: 0;
     // flex-direction: column;
+
+    .productOutContaintLinkGet{
+        width: 100%;
+        display: inline;
+    }
     .productItemContainer{
         
         @include border;
         
         flex-grow: 1;
+        border: .25rem solid rgba(0, 0, 0, 0.1);
+
+        &:hover{
+            border: .25rem solid black;
+
+        }
     }
 
     .imgProduct{
         height: 20rem;
         @include border;
+        position: relative;
+
+        img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            // border: 1rem solid black;
+        }
+    }
+    .state{
+        border: 1px dashed black;
+        position: absolute;
+        top: 0%;
+        left: 0px;
+        z-index: $topCoverProduct25;
+
+        span{
+            padding: 1rem 2rem;
+            background: orangered;
+            display: inline-block;
+
+            border: 1px dashed black;
+        }
     }
 }
 
+.featureProductItem{
+    background-color: rgba(255, 255, 255, 0.5);
+    // width: 100%;
+    // height: 100%;
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s all;
+    z-index: $topCoverProduct50;
+
+    &:hover{
+        opacity: 1;
+        transition: .5s all;
+    }
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .listFeature{
+        border: 1PX dashed black;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a{
+            display: inline-block;
+            padding:.5rem;
+            font-size: 1.25rem;
+            margin: .5rem;
+            border: 1px dashed black;
+            cursor: pointer;
+
+
+            &:hover{
+                // margin: 1rem;
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
 .headerProduct{
     padding: .25rem;
     text-align: center;

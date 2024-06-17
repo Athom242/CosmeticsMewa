@@ -53,134 +53,77 @@
         }
 }
 
-.buttonCount{
-    border: 1px dashed black;
-    display: inline-block;
-    
-    span{
-        // height: 100%;
-        display: inline-block;
-        padding: 1rem;
-        border: 1px dashed black;
-
-        cursor: pointer;
-
-        font-size: 1rem;
-        &.left:hover{
-            background: orangered;
-        }
-        &.right:hover{
-            background: burlywood;
-        }
-    }
-}
-
-.tableProductList{
-    border: 1px solid black;
-    height: 100%;
+table{
+    @include border();
     width: 100%;
-    text-align: center;
-    font-size: 1.5rem;
 
-    &:hover{
-        transition: .5s all;
-    }
-    td{
-        border: 1px dashed black;
-        margin: .1rem;
-        padding: .75rem;
-        
+    .buttonCount{
+        @include border;
+        padding: 0px;
+        // span{
+        //     cursor: pointer;
+        // }
+
+        .left,.right{
+            cursor:pointer
+        }
+        .left{
+            background: orangered;
+            // &:hover{
+                
+            // }
+        }
+        .right{
+            background: green;
+        }
     }
 
+    span{
+        padding: 1rem;
+        display: inline-block;
+    }
     thead{
-        border: 1px dashed black;
-        font-size: 1.25rem;
-        background: burlywood;
-
+        
         td{
-            
             padding: 1rem;
+            @include border;
+            text-align: center;
+            background-color: orangered;
+            font-weight: bolder;
         }
     }
 
     tbody{
-        // text-align: left;
+        text-align: center;
+        font-size: 1.25rem;
+        tr{
+            td:first-child{
+                box-sizing: border-box ;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
 
-        
-
-        tr>td:first-child{
-            display: flex;
-            // height: 100%;,
-            flex-direction: row;
-            .removeProduct{
-                display: inline-block;
-                margin: 1rem;
-                // padding: .75rem;
-                // padding: 1rem;
-                padding: .75rem;
-                border-radius: 1rem;
-                // justify-self: ;
-
-                cursor: pointer;
-
-                &:hover{
-                    // color: white;
-                    background: rgba(255, 0, 0, 0.25);
-                    transition: .5s all;
+                span:first-child{
+                    // padding: 0px;
+                    // justify-self: self-end;
+                    // position: relative;
+                    // right: 25%;
                 }
+                // flex-shrink: 0;
+                // span{
+                //     padding: .25rem;
+                //     margin: 0px 1rem;
+                // }
+                // padding: 1rem;
+                // height: 100%;
             }
-            // @include centerFlex();
-            justify-content: center;
-            align-items: center;
-        }
-    }
-}
 
-.linkFeature{
-    display: flex;
-    padding: 1rem;
-    margin: 1rem 0px;
-    border: 1px dashed black;
-    justify-content: flex-end;
-
-}
-
-.linkFeatureAction{
-    background: black;
-    color: white;
-    display: inline-block;
-    padding: 1rem;
-    font-size: 1rem;
-    border:.25rem solid black;
-    &:hover{
-        color: black;
-        background: white;
-        transition:.5s all ;
-    }
-}
-
-
-.cartTotals{
-    border: 1px dashed black;
-    width: 75%;
-    td{
-        width: 10rem;
-        border: 1px dashed black;
-
-        font-size: 2rem;
-        padding: 1rem;
-
-        .linkFeature{
-            background: black;
-            color: white;
-            display: inline-block;
-            padding: 1rem;
-            font-size: 1rem;
-            border:.25rem solid black;
-            &:hover{
-                color: black;
-                background: white;
-                transition:.5s all ;
+            td{
+                // padding: 2rem;
+                // font-size: 1.1rem;
+                border: 1px solid black;
+                
             }
         }
     }

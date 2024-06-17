@@ -1,11 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useState,useRef } from "react";
 import Header from "../component/headerPage/navigation";
 import Footer from "../component/Footer/footer";
 import { Link } from "react-router-dom";
 
 
+
 //--------------------data Product----------
-import dataProduct from "../data/dataProduct/dataItem.json";
+import dataProduct from "../data/dataProduct/dataItem";
+import { ListProductChoice, cacheListProduct } from "../component/ActionMethod/contextData";
 
 // import { Footer, Header } from "./home";
 function EmptyShop(props){
@@ -20,20 +22,53 @@ function EmptyShop(props){
     )
 }
 
-function ButtonCount(props){
+export function ButtonCount({value,onChange}){
     // const [value,setValue]=useState(props.value);
-
+    /**
+     * Boutton de decompte du nombre de produit selectionner
+     */
 
     return(
         <span className="buttonCount">
-            <span className="left" onClick={props.onChange}>-</span>
-            <span className="value">{props.value}</span>
-            <span className="right" onClick={props.onChange}>+</span>
+            <span className="left" onClick={onChange}>-</span>
+            <span className="value">{value}</span>
+            <span className="right" onClick={onChange}>+</span>
         </span>
     )
 }
-function ContaintTable(props){
+function ContaintTable({props,itemsProductData}){
+    /**
+     * le tableau principal de la page
+     * listHeaderTable => list des des elements de l'en tete
+     * subTotalPriceFunction => Fonction Calcul somme des courses
+     * ListtemProduct => Valeur list 
+     */
+
+
+    
     const listHeaderTable=["PRODUCT","PRICE","QUANTITY","SUBTOTAL"];
+    const [productDataItem,setProductDataItem]=useState((()=>{
+        const arrayCopy=[...itemsProductData];
+        const data=dataProduct.products;
+
+        let listProductShop=[];
+
+        data.map(index=>{
+            arrayCopy.map(indexFilter=>{
+                if(index.idProductType==indexFilter){
+                    listProductShop.push(index)
+                }
+            })
+        })
+        // setProductDataItem([...listProductShop]);
+        console.log("productDataItem",listProductShop);
+        return listProductShop;
+    })());
+    
+
+
+    // listRealProductItem();
+
     const subTotalPriceFunction=(arr)=>{
         let count=0;
         arr.map(index=>{
@@ -42,11 +77,13 @@ function ContaintTable(props){
 
         return count;
     };
+
     const ListtemProduct=(()=>{
         let list = [];
         
-        list.push((props.itemsProductData.map(index=>{
+        list.push((productDataItem.map(index=>{
             // totalPriceInitValue+=index.price.current;
+            console.log(index);
             return({idProductType:index.idProductType,countProduct:1,price:index.price.current,subTotalPrice:index.price.current});
         })));
 
@@ -59,10 +96,10 @@ function ContaintTable(props){
     
     const itemRef=useRef(null);
     // console.log(itemsProducts);
-    console.log("----------------------------");
-    console.log(itemsProducts);
-    console.log(totalPrice)
-    console.log("----------------------------");
+    // console.log("----------------------------");
+    // console.log(itemsProducts);
+    // console.log(totalPrice)
+    // console.log("----------------------------");
 
 
     // ----------------------fonction de evenement---------------------
@@ -82,13 +119,13 @@ function ContaintTable(props){
         
         const countProduct=copyItemProduct[index].countProduct;
 
-        console.log(index);
+        // console.log(index);
         
 
         switch(target.classList.value){
             
             case "left":
-                console.log("la valeur est soustraitre");
+                // console.log("la valeur est soustraitre");
                 copyItemProduct[index].countProduct-=1;
                 if(!(copyItemProduct[index].countProduct)){
                     copyItemProduct[index].countProduct=1;
@@ -96,7 +133,7 @@ function ContaintTable(props){
                 // handleProductPrice(event);
             break
             case "right":
-                console.log("la valeur additionner ");
+                // console.log("la valeur additionner ");
                 
                 copyItemProduct[index].countProduct+=1;
                 break
@@ -108,8 +145,8 @@ function ContaintTable(props){
         setItemsProduct(copyItemProduct);
         setTotalPrice(parseFloat((subTotalPriceFunction(copyItemProduct)).toFixed(decimalNumber)));
 
-        console.log(copyItemProduct[index]);
-        console.log(copyItemProduct);
+        // console.log(copyItemProduct[index]);
+        // console.log(copyItemProduct);
 
         // if(target.classList.find(index=>index=="left"))
     }
@@ -150,36 +187,40 @@ function ContaintTable(props){
 
     return(
         <>
-            <table className="tableProductList">
+            <table>
 
-            <thead>
-                <tr>
-                    {listHeaderTable.map(index=>{
-                        return(<td>{index}</td>)
+
+                <thead>
+                    <tr>
+                        {listHeaderTable.map(index=>{
+                            return(<td>{index}</td>)
+                        })}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {itemsProducts.map(index=>{
+                        return(
+                            <tr id={index.idProductType} key={index.idProductType}>
+                                <td><span className="removeProduct" onClick={handleRemoveListProduct(index.idProductType)}><i class="bi bi-trash"></i></span> <div className="productProfile"><span>{index.idProductType}</span></div></td>
+                                <td><div className="price"><span className="device">$</span><span>{index.price}</span></div></td>
+                                <td><ButtonCount value={index.countProduct} onChange={handleChangeCount}/></td>
+                                <td><div className="priceSubTotal"><span className="device">$</span><span className="total" ref={itemRef}>{index.subTotalPrice}</span></div></td>
+                            </tr>
+                        )
                     })}
-                </tr>
-            </thead>
-
-            <tbody>
-                {itemsProducts.map(index=>{
-                    return(
-                        <tr id={index.idProductType} key={index.idProductType}>
-                            <td><span className="removeProduct" onClick={handleRemoveListProduct(index.idProductType)}><i class="bi bi-trash"></i></span> <div className="productProfile"><span>{index.idProductType}</span></div></td>
-                            <td><div className="price"><span className="device">$</span><span>{index.price}</span></div></td>
-                            <td><ButtonCount value={index.countProduct} onChange={handleChangeCount}/></td>
-                            <td><div className="priceSubTotal"><span className="device">$</span><span className="total" ref={itemRef}>{index.subTotalPrice}</span></div></td>
-                        </tr>
-                    )
-                })}
 
 
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colSpan={listHeaderTable.length-1}>Total de facture</td><td colSpan={1}><span className="devise">$</span><span className="mounTotal">{totalPrice}</span></td>
-                </tr>
-            </tfoot>
+                </tbody>
+                
+                <tfoot>
+                    <tr>
+                        <td colSpan={listHeaderTable.length-1}>Total de facture</td><td colSpan={1}><span className="devise">$</span><span className="mounTotal">{totalPrice}</span></td>
+                    </tr>
+                </tfoot>
+
             </table>
+
             <div className="linkFeature">
                 <Link className="linkFeatureAction" to={"./"}>UPDATE CART</Link>
             </div>
@@ -214,29 +255,34 @@ function ContaintTable(props){
                     </tr>
                 </tfoot>
             </table>
-
-
         </>
     )
 }
-export function HeaderTitle(props){
+export function HeaderTitle({title,headerStyle=null}){
     return(
-        <div className="headerTitle">
+        <div className="headerTitle" style={headerStyle}>
             <div className="containt">
-                <h1>{props.title}</h1>
+                <h1>{title}</h1>
             </div>
         </div>
     )
 }
-export default function ShopPageAction(props){
-    
-    const [itemProduct, setItemProduct] = useState(dataProduct.products);
+export default function ShopPageAction({dataProduct}){
+    // dataProduct.products
+    // const [choiceProductList,setChoiceProductList]=useState(cacheListProduct.length?cacheListProduct:[]);
+    // const [itemProduct, setItemProduct] = useState(props.dataProduct);
+    const [choiceProductList,setChoiceProductList]=useState(cacheListProduct.length?cacheListProduct:[]);
+    const [itemProduct, setItemProduct] = useState(dataProduct);
+
+    console.log("Envoi de choiceProductList shopActionPage",choiceProductList);
+    console.log("Envoi de cacheListProduct",cacheListProduct);
 
     const handleListChange=()=>{
 
     }
 
     return(
+        <ListProductChoice.Provider value={choiceProductList}>
         <div className="shopPageAction">
             <Header/>
             <HeaderTitle title={"card"}/>
@@ -244,12 +290,13 @@ export default function ShopPageAction(props){
             <div className="shopPageContaint">
 
                 <div className="containt">
-                    {itemProduct.length?<ContaintTable itemsProductData={itemProduct} onChange={handleListChange}/>:<EmptyShop/>}
+                    {choiceProductList.length?<ContaintTable itemsProductData={choiceProductList} onChange={handleListChange}/>:<EmptyShop/>}
                 </div>
                 
             </div>
 
             <Footer/>
         </div>
+        </ListProductChoice.Provider>
     )
 }

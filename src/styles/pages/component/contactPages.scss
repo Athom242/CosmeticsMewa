@@ -1,0 +1,28 @@
+
+.sectionListContactLink{
+
+
+    // display: flex;
+    @include border();
+
+    .containt{
+        display: flex;
+        @include border();
+    }
+
+
+}
+
+.listContact{
+
+    @include border();
+    margin: 5rem auto;
+    display: flex;
+    justify-content: space-between;
+
+
+    li{
+        padding: 4rem;
+        display: inline-block;
+    }
+}

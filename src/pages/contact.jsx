@@ -2,6 +2,9 @@ import Footer from "../component/Footer/footer";
 import SectionFooterContaint from "../component/SectionPageComponant/sectionFooterContaint";
 import Header from "../component/headerPage/navigation";
 import { HeaderTitle } from "./shopPageAction";
+import bcgImage from "../media/HeaderBrand/backgroundImageMaquillageBosses.jpg";
+import { ListProductChoice, cacheListProduct } from "../component/ActionMethod/contextData";
+import { useState } from "react";
 
 
 function SectionListContactLink(props){
@@ -30,12 +33,17 @@ function SectionListContactLink(props){
         phone:"77 387 17 21"
     }];
 
+
+    const handleProduct=(event)=>{
+        console.log(cacheListProduct);
+    }
+
     return(
         <div className="sectionListContactLink">
             <div className="containt">
                 <ul className="listContact">
                     {contactList.map(index=>{
-                        return(<li>
+                        return(<li onClick={handleProduct}>
                             <h3 className="title">{index.city}</h3>
                             <div className="containtContact">
                                 <div><span>Address : {index.address}</span></div>
@@ -51,11 +59,25 @@ function SectionListContactLink(props){
 }
 
 export default function ContactPage(props){
+    const [productChoiceList,setProductChoiceList]=useState(cacheListProduct.length?cacheListProduct:[]);
+
+    const headerStyleValue={
+        // background:"url",
+        padding:"7.5rem 0px",
+        backgroundImage:`url(${bcgImage})`,
+        backgroundPosition:"center",
+        backgroundRepeat:"no-repeat",
+        backgroundSize:"cover",
+
+
+    }
     return (<div className="contactPage">
-    <Header/>
-    <HeaderTitle title="CONTACT US"/>
-    <SectionListContactLink/>
-    <SectionFooterContaint/>
-    <Footer/>
+        <ListProductChoice.Provider value={productChoiceList}>
+            <Header/>
+            <HeaderTitle title="CONTACT US" headerStyle={headerStyleValue}/>
+            <SectionListContactLink/>
+            <SectionFooterContaint/>
+            <Footer/>
+        </ListProductChoice.Provider>
 </div>)
 }

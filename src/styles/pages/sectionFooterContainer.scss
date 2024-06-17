@@ -4,7 +4,7 @@
         margin: 0px auto;
         @include flex();
 
-        background: url("../../media/h-6-single-img-1-1.jpg");
+        background: url("../../media/HeaderBrand/h-6-single-img-1-1.jpg");
         background-size:cover;
         // background-position: center;
         background-repeat: no-repeat;
@@ -27,7 +27,7 @@
             @include centerFlex;
             
 
-            background: url("../../media/h-6-single-img-1-1.jpg");
+            background: url("../../media/HeaderBrand/h-6-single-img-1-1.jpg");
             background-size:cover;
             // background-position: center;
             background-repeat: no-repeat;
@@ -52,6 +52,7 @@
 
                 @include flex;
                 flex-direction: column;
+                // text-align: left;
 
                 .title{
                     font-size: 2rem;
@@ -64,7 +65,7 @@
                     font-weight: lighter;
                     width: 100%;
                     margin: 0px auto;
-                    text-align: left;
+                    
                 }
             }
             form{
