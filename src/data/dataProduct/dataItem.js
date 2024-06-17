@@ -1,7 +1,9 @@
 const importAll = (r) => r.keys().map(r);
-const imageMap=importAll(require.context('../../media', false, /\.(png|jpe?g|svg)$/));
+const imageMap=importAll(require.context('../../media/ProductImage', false, /\.(png|jpe?g|svg)$/));
 
-
+const indexImg=()=>{
+  return Math.ceil(Math.random()*(imageMap.length-1))
+}
 const category={
   "Marque":{
 
@@ -34,7 +36,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":99.99,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         // "images":{
         //   "front":"...",
         //   "left":"...",
@@ -64,7 +66,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":1.25,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -88,7 +90,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":25,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -113,7 +115,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":75,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -137,7 +139,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":99.99,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -161,7 +163,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":1.25,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -185,7 +187,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":25.5,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -209,7 +211,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":75,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -233,7 +235,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":75,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         "idCategory":"",
         "quantity":1,
         "descr":{
@@ -257,7 +259,7 @@ export default {
         "nameProduct":"Lotion de toilet",
         "price": {"current":75,"last":0},
         "dateInput":"10/12/2004",
-        "image":[{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},{pos:"front",img:imageMap[1]},],
+        "image":[{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},{pos:"front",img:imageMap[indexImg()]},],
         "idCategory":"",
         "quantity":1,
         "descr":{

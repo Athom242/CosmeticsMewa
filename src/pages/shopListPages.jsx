@@ -3,7 +3,7 @@ import Footer from "../component/Footer/footer";
 import { ProductItem } from "../component/SectionPageComponant/chooseProductSelling";
 import Header from "../component/headerPage/navigation";
 import { HeaderTitle } from "./shopPageAction";
-import bcgImage from "../media/backgroundImageBeauty.jpg";
+import bcgImage from "../media/HeaderBrand/backgroundImageBeauty.jpg";
 import { ListProductChoice, cacheListProduct } from "../component/ActionMethod/contextData";
 
 // ----------------Information data 

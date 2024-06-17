@@ -7,6 +7,9 @@ $fontTitle3:1.5rem;
     box-sizing: border-box;
 }
 
+ul{
+    padding: 0px;
+}
 @mixin border{
     border: 1px dashed #000000;
 }
@@ -418,7 +421,7 @@ header{
 }
 
 .headerBrandContaint{
-    background: url("../../media/h-6-single-img-1-1.jpg");
+    background: url("../../media/HeaderBrand/h-6-single-img-1-1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

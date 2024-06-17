@@ -2,7 +2,7 @@ import Footer from "../component/Footer/footer";
 import SectionFooterContaint from "../component/SectionPageComponant/sectionFooterContaint";
 import Header from "../component/headerPage/navigation";
 import { HeaderTitle } from "./shopPageAction";
-import bcgImage from "../media/backgroundImageMaquillageBosses.jpg";
+import bcgImage from "../media/HeaderBrand/backgroundImageMaquillageBosses.jpg";
 import { ListProductChoice, cacheListProduct } from "../component/ActionMethod/contextData";
 import { useState } from "react";
 

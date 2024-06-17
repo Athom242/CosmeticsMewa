@@ -28,6 +28,7 @@ function productItemDetailGet(idObjectInfo){
 }
 
 function ProductInfoImage({imageObjectList}){
+    const [numberImage,setNumberImage]=useState(0);
 
     const handleViewImageOnMain=(index)=>{
         /**
@@ -37,8 +38,13 @@ function ProductInfoImage({imageObjectList}){
         console.log("ProductItemInfoImage" ,index)
 
         return (event)=>{
-            console.log("ProductItemImageLink")
+            console.log("ProductItemImageLink" ,index);
+            setNumberImage(index);
         }
+    }
+
+    const handleViewImageOnDownMain=(event)=>{
+        setNumberImage(0)
     }
 
     console.log("ProductInfoImage",imageObjectList);
@@ -46,12 +52,12 @@ function ProductInfoImage({imageObjectList}){
     return (
         <div className="imageProduct">
             <div className="sideimage">
-                {imageObjectList.map(index=>{
-                    return <a href="#" onClick={handleViewImageOnMain(index.img)} className="imgLink"><img src={index.img} alt="" /></a>
+                {imageObjectList.map((index,value)=>{
+                    return <a href="#" onMouseEnter={handleViewImageOnMain(value)} onMouseLeave={handleViewImageOnDownMain}className="imgLink"><img src={index.img} alt="" /></a>
                 })}
             </div>
             <div className="mainImage">
-                <img src={imageObjectList[0].img} />
+                <img src={imageObjectList[numberImage].img} />
             </div>
         </div>
     )
@@ -75,8 +81,27 @@ function PurchaseLink({idProduct,handleProductShop}){
     )
 }
 
-function ProductInfoMore(){
-    console.log("Bonjour tout le monde je suis je suis le nouveau")
+function ProductInfoMore({productDetail}){
+    return (
+      <div className="productInfoMore">
+            <table className="productInfoMoreList">
+                <tbody>
+                    <tr>
+                        <td>idProductType </td>
+                        <td>{productDetail.idProductType}</td>
+                    </tr>
+                    <tr>
+                        <td>category </td>
+                        <td>{productDetail.idProductType}</td>
+                    </tr>
+                    <tr>
+                        <td>tagName </td>
+                        <td>{productDetail.idProductType}</td>
+                    </tr>
+                </tbody>
+            </table>
+      </div>
+    );
 }
 
 
@@ -107,11 +132,14 @@ function ProductInfoDescr({productDetail}){
     return(
         <div className="ProductInfoDescr">
             <div className="productHeader">
-                <div className="title">{productDetail.idProductType} {productDetail.nameProduct}</div>
-                <div className="price"></div>
+                <div className="productHeaderInfo">
+                    <h3 className="title">{productDetail.nameProduct}</h3>
+                    <div className="price"><h3><span className="devise">$</span><span>{productDetail.price.current}</span></h3></div>
+                </div>
+                
                 <div className="productDescr">
                     <p>
-
+                        {productDetail.descr.long}
                     </p>
                 </div>
 
@@ -119,9 +147,8 @@ function ProductInfoDescr({productDetail}){
                     <ButtonCountChange value={0} handleChangeValue={handleChangeValue}/> 
                     <PurchaseLink idProduct={productDetail.idProductType} handleProductShop={handleProductShop()}/>
                 </div>
-                <div className="productInfoMore">
-                    <ProductInfoMore/>
-                </div>
+                <ProductInfoMore productDetail={productDetail}/>
+
             </div>
         </div>
     )
@@ -130,7 +157,8 @@ function ProductInfoDescr({productDetail}){
 function ProductFeatureInfo({productDetail}){
 
     const ProductInfoFeaturedescr=({productDetail})=>{
-        const description=productDetail.descr.long;
+        // const description=productDetail.descr.long;
+        const description="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure? "
         return (
             <div className="containt productInfoFeature productInfoFeatureDscr">
                 <p className="productInfoValue">{description}</p>
@@ -169,7 +197,7 @@ function ProductFeatureInfo({productDetail}){
 
 
         return(
-            <div className="containt productInfoFeature productInfoFeatureReview">
+            <div className="containt productInfoFeature productInfoFeatureReview active">
                 <div className="titleFeature">
                     <h2><span className="countComment">{countComment}</span> REVIEW FOR {nameProduct}</h2>
                 </div>
@@ -182,13 +210,21 @@ function ProductFeatureInfo({productDetail}){
             </div>
         )
     }
+    
 
     const handleChangeViewProduct=(index)=>{
         const idProductList=index;
+        
         return (event)=>{
+            const target=event.currentTarget;
+            event.preventDefault();
+
+            setCurrentFeature(index);
             console.log("changeViewProduct" ,idProductList)
         }
     }
+
+    const [currentFeature,setCurrentFeature]=useState(0);
 
     const headerControl=[{"link":"Description","container":<ProductInfoFeaturedescr productDetail={productDetail}/>},
     {"link":"Additional Information","container":<ProductInfoFeatureAddInfo productDetail={productDetail}/>},
@@ -201,18 +237,19 @@ function ProductFeatureInfo({productDetail}){
             <div className="headerControl">
                 <ul className="headerControlList">
 
-                    {headerControl.map((index)=>{
+                    {headerControl.map((value,index)=>{
                         return (<li>
-                                    <a href="" onClick={handleChangeViewProduct(index)}>{index.link}</a>
+                                    <a href="#" onClick={handleChangeViewProduct(index)}>{value.link}</a>
                                 </li>)
                     })}
 
                 </ul>
 
                 <div className="containtRenderChange">
-                    {headerControl.map((index)=>{
-                        return (<div className="containt">{index.container}</div>)
-                    })}
+                    {/* {headerControl.map((value,index)=>{
+                        return (<div className="containt">{value.container}</div>)
+                    })} */}
+                    {headerControl[currentFeature].container}
                 </div>
             </div>
         </div>
@@ -223,6 +260,7 @@ function ProductFeatureInfo({productDetail}){
 
 
 const ProductInfoRelated=({})=>{
+    const [listRelatedFeature,setListRelatedFeature]=useState([]);
     
     return (
         <div className="containt productInfoRelated">

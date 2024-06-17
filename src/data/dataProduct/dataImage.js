@@ -2,7 +2,7 @@ import React from "react";
 
 
 const importAll = (r) => r.keys().map(r);
-const imageMap=importAll(require.context('../../media', false, /\.(png|jpe?g|svg)$/));
+const imageMap=importAll(require.context('../../media/HeaderBrand/', false, /\.(png|jpe?g|svg)$/));
 
 const findIt=(elt)=>{
     return imageMap.find(index=>{

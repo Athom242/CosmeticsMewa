@@ -62,7 +62,7 @@ export function ProductItem({productData,handleAddProduct}){
                 <div className="productItemContainer">
                     <div className="imgProduct">
                         <div className="state"><span>space</span></div>
-                        <img src={productItemData.image[0]} alt="" />
+                        <img src={productItemData.image[0].img} alt="" />
                         <FeatureProduct handleViewDetail={handleViewDetail(productItemData.idProductType)} handleAddListShop={handleAddProduct(productItemData.idProductType)}/>
 
                     </div>
@@ -89,7 +89,7 @@ export function ProductItem({productData,handleAddProduct}){
                         </div>
                     </div>
                 </div>
-                
+
             </Link>
         </div>
     )
