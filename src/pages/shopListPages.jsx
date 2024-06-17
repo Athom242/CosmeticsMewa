@@ -86,10 +86,10 @@ function NavigationFooter({props,listProduct}){
                     <a href="#"><i class="bi bi-arrow-right"></i></a>
                 </li>
             </ul>
-
+{/* 
             <span className="rightPageProduct">
                 -
-            </span>
+            </span> */}
         </nav>
     )
 }
