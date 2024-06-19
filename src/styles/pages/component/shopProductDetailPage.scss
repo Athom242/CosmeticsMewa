@@ -1,3 +1,8 @@
+$textaeraHeight:20rem;
+$textaeraWidth:100%;
+$paddingTextArea:1rem;
+$marginInputForm:1rem;
+
 .productInfoError{
     @include border;
     // padding: 2rem auto;
@@ -228,4 +233,62 @@
 
 .productInfoRelated{
     @include border;
+    
+
+}
+
+.comment{
+    @include border;
+    margin: 1rem 0px;
+    border-style: solid;
+    border-color: rgba($color: black, $alpha: .25);
+
+    .commentDetail{
+        .name{
+            font-size: 1.2rem;
+            padding: .25rem;
+        }
+        .date{
+            font-size: 1.1rem;
+            padding: .25rem;
+        }
+    }
+
+    .commentValue{
+        margin-left: 1rem;
+    }
+
+    .addReview{
+        padding: .5rem 2rem;
+        border: 0px;
+    }
+
+}
+
+
+.addcommentSection{
+    & form>*{
+        width: $textaeraWidth;
+        padding: $paddingTextArea;
+        margin-top: $marginInputForm;
+        
+
+
+    }
+
+    input[type="submit"]{
+        width: auto;
+        padding: auto 2rem;
+
+        // border:0px;
+    }
+
+
+    textarea{
+        height: $textaeraHeight;
+        // padding: $paddingTextArea;
+    }
+}
+.subComment{
+
 }

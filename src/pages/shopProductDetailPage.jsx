@@ -175,7 +175,72 @@ function ProductFeatureInfo({productDetail}){
             </div>
         )
     }
+    const AddCommentSection=({profile})=>{
+        const [formValueComment,setFormValueComment]=useState({
+            areaValue:"Bonjour tout le monde je suis le nouveau fichier ",
+            nameValue:"moussavou anthony",
+            emailValue:"moussavouanthony@gmail.com"
 
+        });
+
+        const [textAreaValue,setTextAreaValue]=useState("Ecrivez votre commentaire ici");
+        const placeHolderName="Your Name";
+        const placeHolderEmail="Your Email";
+        const valueSubmit="Soumettre";
+
+        const handleChangeComment=(e)=>{
+            const {name,value}=e.target;
+            console.log(name,value);
+            
+            setFormValueComment(preveStateForm=>({
+                ...preveStateForm,
+                [name]:value
+            }));
+        };
+        
+         const handleSubmitComment=async (e)=>{
+            e.preventDefault();
+            try{
+                const response=await fetch('http://mewacosmetics/server.php',{
+                    method:"POST",
+                    headers:{
+                        'content-Type':'application/json'
+                    },
+                    body:JSON.stringify(formValueComment)
+                })
+
+                if(!response.ok){
+                    throw new Error("Error lors de l'envoie des données");
+                }
+
+                const data=await response.json();
+                console.log("Reponse du serveur:",data,formValueComment);
+
+                setFormValueComment({
+                    textAreaValue:"",
+                    userName:"",
+                    userEmail:""
+                });
+            }catch (error){
+                console.error("Erreur",error)
+            }
+         };
+
+        return (
+            <div className="addcommentSection">
+                <form onSubmit={handleSubmitComment}>
+                    <textarea id="areaValue" name="areaValue" style={{width:"100%"}} onChange={handleChangeComment}placeholder={textAreaValue}>
+                        
+                    </textarea>
+                    {/* <input type="text" /> */}
+                    <input type="text" id="nameValue" name="nameValue" style={{width:"100%"}} onChange={handleChangeComment}placeholder={placeHolderName}/>
+                    <input type="email" id="emailValue" name="emailValue" style={{width:"100%"}} onChange={handleChangeComment}placeholder={placeHolderEmail}/>
+
+                    <input type="submit" value={valueSubmit} />
+                </form>
+            </div>
+        )
+    }
     const ProductInfoFeatureReview=({productDetail})=>{
 
 
@@ -183,16 +248,24 @@ function ProductFeatureInfo({productDetail}){
         const nameProduct="Lotion";
 
         const Comment=({commentInfo})=>{
-            <div className="comment">
+            return (
+              <div className="comment">
                 <div className="commentContaint">
-                    <img src="#" alt="" />
-                    <div className="commentDetail">
-                        <h3 className="profile"><span className="name">Isabel MIller</span>-<span className="date">August 14, 2019</span></h3>
-                        <p className="commentValue">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque, aliquid!</p>
-                    </div>
+                  <img src="#" alt="" />
+                  <div className="commentDetail">
+                    <h3 className="profile">
+                      <span className="name">Isabel MIller</span>-
+                      <span className="date">August 14, 2019</span>
+                    </h3>
+                    <p className="commentValue">
+                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                      Atque, aliquid!
+                    </p>
+                  </div>
                 </div>
                 <button className="addReview">Add review</button>
-            </div>
+              </div>
+            );
         }
 
 
@@ -207,6 +280,9 @@ function ProductFeatureInfo({productDetail}){
                     <Comment commentInfo={""}/>
                     <Comment commentInfo={""}/>
                 </div>
+
+                <AddCommentSection/>
+                
             </div>
         )
     }
