@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
-  "homepage":"https://Athom242.github.io/CosmeticsMewa",
-=======
   "homepage": "./",
->>>>>>> Stashed changes
   "name": "web-cosmetics",
   "version": "0.1.0",
   "private": true,
