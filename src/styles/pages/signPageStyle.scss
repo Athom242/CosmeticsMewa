@@ -1,0 +1,46 @@
+.signPage{
+    @include border;
+    width: 100vw;
+    height: 100vh;
+}
+
+.signPageContainer{
+    @include border;
+    width: 50%;
+    height: 50%;
+    margin: 0px auto;
+
+    position: relative;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    
+
+    .title{
+        text-align: center;
+    }
+
+    .formSignContainer{
+        display: flex;
+        
+
+        form{
+            @include border;
+            
+            display:flex;
+            flex-direction: column;
+        }
+    }
+
+    .overlay{
+        display: flex;
+    }
+
+    .signPageFeature{
+        display: flex;
+        // flex-shrink: 0;
+        flex-grow: 0;
+    }
+}
+

@@ -149,7 +149,7 @@ export function Navigation({handleChangeProductChoiceList}){
                     </li>
 
                     <li>
-                        <Link to="#" onClick={handleDisplayPageAction} id="login" ref={linkRef}><i class="bi bi-person-fill"></i></Link>
+                        <Link to="/signPage" onClick={handleDisplayPageAction} id="login" ref={linkRef}><i class="bi bi-person-fill"></i></Link>
                     </li>
                 </div>
 
