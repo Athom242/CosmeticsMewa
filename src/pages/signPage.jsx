@@ -25,23 +25,30 @@ const SocialContainer=()=>{
 }
 
 const SignInContainer=()=>{
+    const handleSign=()=>{
+        
+    }
     return(
-        <form action="#">
+        <form action="#" className="signFormContainer signInContainer">
             <h1>Sign In</h1>
             <SocialContainer/>
             <span>Or Use Your account</span>
 
             <input type="email" placeholder="Email"/>
             <input type="password" placeholder="Password" />
-            <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
+
+            <div className="formBottom">
+                <p><a href="#">Forgot your password ?</a></p>
+                <button>Sign In</button>
+            </div>
+
         </form>
     )
 }
 
 const SignUpContainer=()=>{
     return(
-        <form action="#">
+        <form action="#" className="signFormContainer signUpContainer">
             <h1>create Account</h1>
             <SocialContainer/>
             <span>or use your email for registration</span>
@@ -49,9 +56,13 @@ const SignUpContainer=()=>{
             <input type="text" placeholder="Name"/>
             <input type="email" placeholder="Email"/>
             <input type="password" placeholder="Password" />
-            
-            <a href="#">Forgot your password?</a>
-            <button>Sign Up</button>
+
+            <div className="formBottom">
+                <p><a href="#">Forgot your password ?</a></p>
+                <button>Sign Up</button>
+            </div>
+
+
         </form>
     )
 }
@@ -59,17 +70,21 @@ const SignUpContainer=()=>{
 const OverlayContainer=()=>{
     return(
         <div className="overlay">
-            <div className="overleyPanel overlayLeft">
-                <h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
+
+            <div className="overlayContainer">
+                <div className="overleyPanel overlayLeft">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+
+                <div className="overleyPanel overlayRight">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
             </div>
 
-            <div className="overleyPanel overlayLeft">
-                <h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
-            </div>
         </div>
     )
 }
@@ -77,11 +92,11 @@ const OverlayContainer=()=>{
 
 const ButtonHome=()=>{
     return(
-        // <button className="buttonHome">
-            
-        // </button>
 
-        <Link className="buttonHome" to={"/"}>GO HOME</Link>
+        <div className="buttonHomeSection">
+            <Link className="buttonHome" to={"/"}>GO HOME</Link>
+        </div>
+        
     )
 }
 export default function SignPage({}){
