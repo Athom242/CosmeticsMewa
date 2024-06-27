@@ -25,9 +25,7 @@ const SocialContainer=()=>{
 }
 
 const SignInContainer=()=>{
-    const handleSign=()=>{
-        
-    }
+
     return(
         <form action="#" className="signFormContainer signInContainer">
             <h1>Sign In</h1>
@@ -39,14 +37,14 @@ const SignInContainer=()=>{
 
             <div className="formBottom">
                 <p><a href="#">Forgot your password ?</a></p>
-                <button>Sign In</button>
+                <button id="signIn">Sign In</button>
             </div>
 
         </form>
     )
 }
 
-const SignUpContainer=()=>{
+const SignUpContainer=({handleSign})=>{
     return(
         <form action="#" className="signFormContainer signUpContainer">
             <h1>create Account</h1>
@@ -59,7 +57,7 @@ const SignUpContainer=()=>{
 
             <div className="formBottom">
                 <p><a href="#">Forgot your password ?</a></p>
-                <button>Sign Up</button>
+                <button id="signUp" onClick={handleSign}>Sign Up</button>
             </div>
 
 
@@ -67,7 +65,7 @@ const SignUpContainer=()=>{
     )
 }
 
-const OverlayContainer=()=>{
+const OverlayContainer=({handleSign})=>{
     return(
         <div className="overlay">
 
@@ -75,13 +73,13 @@ const OverlayContainer=()=>{
                 <div className="overleyPanel overlayLeft">
                     <h1>Welcome Back!</h1>
                     <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
+                    <button class="ghost" id="signIn"onClick={handleSign}>Sign In</button>
                 </div>
 
                 <div className="overleyPanel overlayRight">
                     <h1>Hello, Friend!</h1>
                     <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <button class="ghost" id="signUp"onClick={handleSign}>Sign Up</button>
                 </div>
             </div>
 
@@ -100,6 +98,24 @@ const ButtonHome=()=>{
     )
 }
 export default function SignPage({}){
+    const handleSign=(event)=>{
+        const signForms=document.querySelectorAll(".signFormContainer");
+        const overlayAction=document.querySelectorAll(".overlay");
+        const overlayPanel=document.querySelectorAll(".overleyPanel");
+        const formSignContainer=document.querySelectorAll(".formSignContainer");
+
+        console.log(signForms);
+        // target.map(index=>{
+        //     index.classList.toggle("active");
+        // })
+
+        overlayAction.forEach(index=>{index.classList.toggle("active")})
+        signForms.forEach(index=>{index.classList.toggle("active")});
+        overlayPanel.forEach(index=>{index.classList.toggle("active")});
+        formSignContainer.forEach(index=>{index.classList.toggle("active")});
+
+        console.log("Modification effectué")
+    }
 
     return(
         <div className="signPage">
@@ -109,11 +125,11 @@ export default function SignPage({}){
 
                 <div className="signPageFeature">
                     <div className="formSignContainer">
-                        <SignInContainer/>
-                        <SignUpContainer/>
+                        <SignInContainer />
+                        <SignUpContainer />
                     </div>
 
-                    <OverlayContainer/>
+                    <OverlayContainer handleSign={handleSign}/>
 
                     
                 </div>
