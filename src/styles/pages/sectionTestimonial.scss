@@ -29,7 +29,7 @@
     .testimonialItem{
         width: 100%;
 
-        @include border;
+        // @include border;
 
 
     }
@@ -52,7 +52,7 @@
             flex-direction: row;
             width:100%;
 
-            overflow-x: scroll;
+            overflow-x: hidden;
 
             // align-items: center
         }
@@ -64,7 +64,7 @@
         margin: 0px auto;
         // flex-grow: 1;
 
-        overflow-x: scroll;
+        // overflow-x: scroll;
 
         .testimonialItem{
             width: 100%;

@@ -57,7 +57,7 @@ export function ProductItem({productData,handleAddProduct}){
 // >>>>>>> Stashed changes
     return(
         <div className="productItem" onClick={handleViewDetailShop(productItemData.idProductType)} style={{cursor:"pointer"}}>
-            <Link to={`shopProductDetailPage/${idProductType}`} className={"productOutContaintLinkGet"}>
+            <Link to={`/shopProductDetailPage/${idProductType}`} className={"productOutContaintLinkGet"}>
 
                 <div className="productItemContainer">
                     <div className="imgProduct">

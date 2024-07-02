@@ -30,11 +30,46 @@ function FooterTestimonial({listTestmonialCurrent}){
 
 
 export default function SectionTestimonial(props){
-    const [listTestmonialCurrent,setTestmonialCurrent]=useState([{id:1,link:""},{id:2,link:""},{id:3,link:""}]);
+    const [listTestmonialCurrent,setTestmonialCurrent]=useState({currentId:0,listTestmonial:[{id:1,link:""},{id:2,link:""},{id:3,link:""}]});
     
     const style={
 
     }
+
+    const handleSliderChange=(option)=>{
+      return (event)=>{
+        const target=document.querySelectorAll(".testimonialItem");
+        const copyListItem={...listTestmonialCurrent};
+        let currentIdRelease=0;
+        
+        
+        if(option){
+          currentIdRelease=((copyListItem.currentId+1)<=(copyListItem.listTestmonial.length-1))?copyListItem.currentId+1:0;
+        }else{
+          currentIdRelease=((copyListItem.currentId-1)>=0)?(copyListItem.currentId-1):(copyListItem.listTestmonial.length-1);
+        }
+        
+        console.log(currentIdRelease);
+        const realTarget=target[currentIdRelease];
+
+        const currentPos=realTarget.offsetWidth*currentIdRelease; //Position
+
+        const parent=realTarget.parentElement; //parent
+
+        parent.scroll(currentPos,0);
+        console.log(currentPos);
+
+
+        setTestmonialCurrent({...copyListItem,currentId:currentIdRelease});
+        console.log(listTestmonialCurrent.currentId);
+        }
+      
+    }
+
+    function handleChangeScroll(event){
+      console.log(event.currentTarget.scrollLeft)
+    }
+
     return (
       <div className="sectionTestimonial">
         <div className="containt">
@@ -45,24 +80,24 @@ export default function SectionTestimonial(props){
             <div className="containtOuter">
                 <div className="containtInner">
                     <div className="buttonCarroucell">
-                        <button>
-                        <i class="bi bi-arrow-left"></i>
+                        <button onClick={handleSliderChange(0)}>
+                          <i class="bi bi-arrow-left"></i>
                         </button>
                     </div>
 
-                    <div className="containtTestimonial">
-                        {listTestmonialCurrent.map((index) => {
-                        return <TesimonalItem />;
+                    <div className="containtTestimonial" onScroll={handleChangeScroll}>
+                        {listTestmonialCurrent.listTestmonial.map((index) => {
+                        return <TesimonalItem key={index.id}/>;
                         })}
                     </div>
 
                     <div className="buttonCarroucell">
-                        <button>
-                        <i class="bi bi-arrow-right"></i>
+                        <button onClick={handleSliderChange(1)}>
+                          <i class="bi bi-arrow-right"></i>
                         </button>
                     </div>
                 </div>
-                <FooterTestimonial listTestmonialCurrent={listTestmonialCurrent}/>
+                <FooterTestimonial listTestmonialCurrent={listTestmonialCurrent.listTestmonial}/>
             </div>
 
           </div>

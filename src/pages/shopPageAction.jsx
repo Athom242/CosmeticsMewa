@@ -103,7 +103,13 @@ function ContaintTable({props,itemsProductData}){
 
 
     // ----------------------fonction de evenement---------------------
-
+    const LinkUpdate=()=>{
+        return (
+            <Link className="linkFeatureAction" to={"/shop"}>
+              UPDATE CART
+            </Link>
+        );
+    }
     const handleChangeCount=(event)=>{
         const target=event.currentTarget;
         const parentRoot=target.parentElement.parentElement.parentElement; 
@@ -185,78 +191,113 @@ function ContaintTable({props,itemsProductData}){
             // itemsProducts.findIndex()
     }}
 
-    return(
-        <>
-            <table>
+    return (
+      <>
+      <div className="containtTableChoice">
+        <table className="tableProductChoice">
+            <thead>
+                <tr>
+                {listHeaderTable.map((index) => {
+                    return <td>{index}</td>;
+                })}
+                </tr>
+            </thead>
 
-
-                <thead>
-                    <tr>
-                        {listHeaderTable.map(index=>{
-                            return(<td>{index}</td>)
-                        })}
+            <tbody>
+                {itemsProducts.map((index) => {
+                return (
+                    <tr id={index.idProductType} key={index.idProductType}>
+                    <td>
+                        <span
+                        className="removeProduct"
+                        onClick={handleRemoveListProduct(index.idProductType)}
+                        >
+                        <i class="bi bi-trash"></i>
+                        </span>{" "}
+                        <div className="productProfile">
+                        <span>{index.idProductType}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div className="price">
+                        <span className="device">$</span>
+                        <span>{index.price}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <ButtonCount
+                        value={index.countProduct}
+                        onChange={handleChangeCount}
+                        />
+                    </td>
+                    <td>
+                        <div className="priceSubTotal">
+                        <span className="device">$</span>
+                        <span className="total" ref={itemRef}>
+                            {index.subTotalPrice}
+                        </span>
+                        </div>
+                    </td>
                     </tr>
-                </thead>
+                );
+                })}
+            </tbody>
 
-                <tbody>
-                    {itemsProducts.map(index=>{
-                        return(
-                            <tr id={index.idProductType} key={index.idProductType}>
-                                <td><span className="removeProduct" onClick={handleRemoveListProduct(index.idProductType)}><i class="bi bi-trash"></i></span> <div className="productProfile"><span>{index.idProductType}</span></div></td>
-                                <td><div className="price"><span className="device">$</span><span>{index.price}</span></div></td>
-                                <td><ButtonCount value={index.countProduct} onChange={handleChangeCount}/></td>
-                                <td><div className="priceSubTotal"><span className="device">$</span><span className="total" ref={itemRef}>{index.subTotalPrice}</span></div></td>
-                            </tr>
-                        )
-                    })}
+            <tfoot>
+                <tr>
+                <td colSpan={listHeaderTable.length - 1}>Total de facture</td>
+                <td colSpan={1}>
+                    <span className="devise">$</span>
+                    <span className="mounTotal">{totalPrice}</span>
+                </td>
+                </tr>
 
-
-                </tbody>
-                
-                <tfoot>
-                    <tr>
-                        <td colSpan={listHeaderTable.length-1}>Total de facture</td><td colSpan={1}><span className="devise">$</span><span className="mounTotal">{totalPrice}</span></td>
-                    </tr>
-                </tfoot>
-
+                <tr>
+                    <LinkUpdate/>
+                </tr>
+            </tfoot>
             </table>
-
-            <div className="linkFeature">
-                <Link className="linkFeatureAction" to={"./"}>UPDATE CART</Link>
-            </div>
+      </div>
 
 
+        <div className="containtTableChoice">
             <table className="cartTotals">
-                <thead>
-                    <tr >
-                        <td colSpan={2}>CART TOTALS</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td className="theaderTitle" >SUBTOTAL</td>
-                        <td><span className="device">{dataProduct.device.current}</span><span className="subtotal">{totalPrice}</span></td>
-                        
-                        
-                    </tr>
-                    <tr>
-                        <td className="tfooterTitle" >TOTAL</td>
-                        <td><span className="device">{dataProduct.device.current}</span><span className="subtotal">{totalPrice}</span></td>
-                        
-                    </tr>
+            <thead>
+                <tr>
+                <td colSpan={2}>CART TOTALS</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td className="theaderTitle">SUBTOTAL</td>
+                <td>
+                    <span className="device">{dataProduct.device.current}</span>
+                    <span className="subtotal">{totalPrice}</span>
+                </td>
+                </tr>
+                <tr>
+                <td className="tfooterTitle">TOTAL</td>
+                <td>
+                    <span className="device">{dataProduct.device.current}</span>
+                    <span className="subtotal">{totalPrice}</span>
+                </td>
+                </tr>
+            </tbody>
 
-                </tbody>
-
-                <tfoot>
-                    <tr>
-                        <td>
-                            <Link  className="linkFeatureAction" to={"./"}>PROCEED TO CHECKOUT</Link>
-                        </td>
-                    </tr>
-                </tfoot>
+            <tfoot>
+                <tr>
+                <td>
+                    <Link className="linkFeatureAction" to={"./"}>
+                    PROCEED TO CHECKOUT
+                    </Link>
+                </td>
+                </tr>
+            </tfoot>
             </table>
-        </>
-    )
+        </div>
+
+      </>
+    );
 }
 export function HeaderTitle({title,headerStyle=null}){
     return(
