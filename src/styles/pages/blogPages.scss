@@ -9,6 +9,9 @@
 
 }
 
+
+
+
 .blogContainer{
     // background-color: red;
     width: 75%;
@@ -21,42 +24,6 @@
 }
 
 
-
-.blogArticleItem{
-    width: 100%;
-    margin: 1rem 0px;
-
-    @include border;
-
-    display: flex;
-    flex-direction: column;
-    // text-align: center;
-
-    .blogHeader{
-        // ;
-    }
-
-    .blogDescr{
-        text-align: center;
-        padding: 1rem 0px;
-    }
-
-    .blogImgLink{
-        position: relative;
-        display: block;
-        @include border;
-
-        width: 100%;
-        height:30rem;
-        
-        img{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-    }
-}
-
 .blogContent{
     padding: 1rem;
 }
@@ -68,3 +35,174 @@
 
     padding: 1rem;
 }
+
+
+
+
+.blogArticleItem{
+    width: 100%;
+    margin: 1rem 0px;
+
+    @include border;
+
+    display: flex;
+
+    .BlogFeature{
+        width: 100%;
+        
+        display: flex;
+        justify-content: start;
+
+        .featureMoreOption{
+            // padding: .25rem 2rem;
+            padding: 1rem;
+            // margin: 1rem;
+            text-decoration: underline;
+            // background-color: orangered;
+
+            // border: none;
+
+        }
+    }
+    .blogHeader{
+        // ;
+
+        .blogImgLink{
+            position: relative;
+            // display: block;
+            @include border;
+            
+    
+
+
+            .link{
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                height:30rem;
+                @include border;
+            }
+            
+            img{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+
+        &.imgMore{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: auto;
+
+            position: relative;
+
+            .link{
+                // position: relative;
+                display: inline-block;
+                // height:auto;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .blogImgLink{
+                flex-grow: 1;
+                // position: relative;
+                
+            }
+        }
+    }
+
+
+
+
+    
+    &.center{
+        flex-direction: column;
+    }
+
+    &.right{
+        flex-direction: row-reverse;
+
+    }
+    &.left{
+        flex-direction: row;
+    }
+
+    &.left,&.right{
+        // height: 20rem;
+        // margin: 1rem 0px;
+        position: relative;
+        // flex-direction: row;
+        // justify-content: space-between;
+        .blogHeader{
+            width: 50%;
+            // flex-grow: 1;
+
+            position: relative;
+            overflow: hidden;
+
+            .blogImgLink{
+                flex-grow: 1;
+                // width: 20rem;
+                height: auto;
+    
+                // position: relative;
+                display: inline-block;
+    
+                img{
+                    // width: 100%;
+                    height: auto;
+                    // position: relative;
+    
+                    // display: inline-block;
+                    position: relative;
+                }
+            }
+
+
+
+
+
+        }
+
+
+        .blogDescr{
+            width: 40%;
+
+            flex-grow: 1;
+
+            // align-items: center;
+            // align-items: center
+
+            @include border;
+
+            .containt{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                
+            }
+        }
+    }
+    
+    // text-align: center;
+
+
+
+    .blogDescr{
+        text-align: center;
+        padding: 1rem 0px;
+
+        .textDescr{
+            text-align: left;
+        }
+    }
+}
+

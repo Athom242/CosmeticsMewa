@@ -3,9 +3,50 @@ import Header from "../component/headerPage/navigation";
 import { HeaderTitle } from "./shopPageAction";
 import bcgImage from "../media/HeaderBrand/backgroundImageMaquillageBosses.jpg"; //Image de blog
 import bcgImageBlog from "../media/blogImage/articleBgcImg1.jpg";
+import { Link } from "react-router-dom";
 
 
-function BlogArticleItem(props){
+
+function BlogCategorie(){
+    const categoryList=[];
+
+
+    return(
+        <div className="blogListCategory">
+            {/* {categoryList.} */}
+        </div>
+    )
+}
+function BlogArticleItem({containtPos="center",listImage=[]}){
+    const posContaint=["center","left","right"];
+    // const containtPos={containtPos};
+    
+    // console.log(containtPos);
+    const classNameContaint=(()=>{
+        for (const key of posContaint) {
+            if ((containtPos?containtPos.toLowerCase:containtPos) == key.toLowerCase) {
+                return containtPos;
+            }
+
+        }
+        return containtPos;
+        })();
+    
+
+    const listImageLink=(()=>{
+        let imageLinkComponent=[];
+
+        for (const index of listImage){
+            if(index){
+                console.log(index)
+                imageLinkComponent.push(<div className="blogImgLink"><a href="#" className="link"><img src={index} alt="Image De Blog de article"/></a></div>);
+            }
+            
+        }
+        return imageLinkComponent;
+    })();
+
+    console.log(listImageLink);
     /**
      *  Paramettre image dans l'article
      *  Soit une seule image Illustratif pour tout l'article 
@@ -21,12 +62,17 @@ function BlogArticleItem(props){
         Titre 
         Courte description
 
+        containtPos:Pour le positionnement des Interne de la árticle
+
      */
     return(
-        <article className="blogArticleItem">
-            <div className="blogHeader">
+        <article className={"blogArticleItem "+classNameContaint} >
+            <div className={"blogHeader "+((listImageLink.length>1)?"imgMore":"")}>
 
-                <a href="#" className="blogImgLink"><img src={bcgImageBlog} alt="Image De Blog de article"/></a>
+                {/* <a href="#" className="blogImgLink"><img src={bcgImageBlog} alt="Image De Blog de article"/></a> */}
+                {listImageLink.map(index=>{
+                    return index;
+                })}
             </div>
             <div className="blogDescr">
                 <div className="containt">
@@ -39,9 +85,13 @@ function BlogArticleItem(props){
                     </div>
 
                     <h2 className="title">HOW DID WE GET HERE</h2>
-                    <p className="textDescr">
+                    <p className="textDescr" style={{padding:"1rem"}}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur perferendis quisquam sequi praesentium eveniet? Unde illo quidem cum enim facere fugiat voluptatem voluptatibus, aspernatur modi molestiae quaerat voluptatum? Ea, facere.
                     </p>
+
+                    <div className="BlogFeature">
+                        <Link className="featureMoreOption" to={""}>View More</Link>
+                    </div>
                 </div>
             </div>
             <div className="blogFooter">
@@ -62,10 +112,18 @@ function BlogContent(props){
     return(
         <div className="blogContent">
             <ul className="blogListArticle">
-                <BlogArticleItem/>
-                <BlogArticleItem/>
-                <BlogArticleItem/>
-                <BlogArticleItem/>
+                <BlogArticleItem listImage={[bcgImageBlog,bcgImageBlog]}/>
+                <BlogArticleItem listImage={[bcgImageBlog,bcgImageBlog]}/>
+                <BlogArticleItem listImage={[bcgImageBlog,bcgImageBlog]}/>
+                <BlogArticleItem listImage={[bcgImageBlog,bcgImageBlog]}/>
+
+                <BlogArticleItem containtPos={"right"} listImage={[bcgImageBlog]}/>
+                <BlogArticleItem containtPos={"left"} listImage={[bcgImageBlog]}/>
+                <BlogArticleItem containtPos={"right"} listImage={[bcgImageBlog]}/>
+                <BlogArticleItem containtPos={"left"} listImage={[bcgImageBlog]}/>
+                <BlogArticleItem listImage={[bcgImageBlog]}/>
+                <BlogArticleItem listImage={[bcgImageBlog,bcgImageBlog]}/>
+                <BlogArticleItem listImage={[bcgImageBlog,bcgImageBlog]}/>
             </ul>
         </div>
     )
