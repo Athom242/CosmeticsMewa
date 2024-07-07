@@ -12,6 +12,7 @@ import ContactPage from './pages/contact';
 import dataProduct from "./data/dataProduct/dataItem"
 import ProductDetailPage from './pages/shopProductDetailPage';
 import SignPage from './pages/signPage';
+import BlogPage from './pages/blogPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const [dataProductChoice,setDataProductChoice]=useState([]);
@@ -50,6 +51,7 @@ root.render(
         <Route path='/shopProductDetailPage/:idProductItem' element={<ProductDetailPage/>}/>
         <Route path="/contactUs" element={<ContactPage />} />
         <Route path='/SignPage' element={<SignPage/>}/>
+        <Route path='/BlogPage' element={<BlogPage/>} />
       </Routes>
     </Router>
   </React.StrictMode>

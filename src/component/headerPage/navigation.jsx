@@ -187,7 +187,7 @@ export function Navigation({handleChangeProductChoiceList}){
 
 
 const  SubNavigation=forwardRef((props,ref)=>{
-    const ListObjectLink=[{name:"Acceuil",link:"/"},{name:"Shop",link:"/shop"},{name:"Contact-Nous",link:"/contactUs"},{name:"Fichier",link:"/fichier"},{name:"A-props",link:"/aboutUs"}];
+    const ListObjectLink=[{name:"Acceuil",link:"/"},{name:"Shop",link:"/shop"},{name:"Contact-Nous",link:"/contactUs"},{name:"Blog",link:"/blogPage"},{name:"A-props",link:"/aboutUs"}];
 
 
     const currentListProductChoice=useContext(ListProductChoice);
