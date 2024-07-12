@@ -7,13 +7,84 @@ import { Link } from "react-router-dom";
 
 
 
-function BlogCategorie(){
-    const categoryList=[];
+function RecentPostItem(){
+    return(
+        <div className="recentPostItem">
+            <div className="lastPost">
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p><span>Apr 30</span> - By <span>Carolina Land</span></p>
+            </div>
+            <div className="recentPost">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit consequuntur incidunt reiciendis soluta voluptatum dolorum. Ipsum quis eos voluptates nemo sit, blanditiis expedita minus aperiam, eligendi tempore minima repudiandae nesciunt.
+                </p>
+            </div>
+
+            <div className="nextPost">
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p><span>Jul 31</span> - By <span>Janny joc</span></p>
+            </div>
+           
+        </div>
+    )
+}
+
+function BlogListCategory({authorImage}){
+    // const categoryList=[];
+    const CategoryList=()=>{
+        return(
+            <div className="categoryListContaint">
+                <h3 className="title">CATEGORIES</h3>
+                <ul>
+                    <li>Body Oil</li>
+                    <li>Body Oil</li>
+                    <li>Body Oil</li>
+                    <li>Body Oil</li>
+                    <li>Body Oil</li>
+                    <li>Body Oil</li>
+                </ul>
+            </div>
+        )
+    }
+
+    const TagName=()=>{
+        return(
+            <div className="tagName">
+                <ul className="tagNameList">
+                    <li><a href="#">fichier</a></li>
+                    <li><a href="#">fichier</a></li>
+                    <li><a href="#">fichier</a></li>
+                    <li><a href="#">fichier</a></li>
+                    <li><a href="#">fichier</a></li>
+                    <li><a href="#">fichier</a></li>
+                </ul>
+            </div>
+        )
+    }
 
 
     return(
         <div className="blogListCategory">
             {/* {categoryList.} */}
+            <div className="headerCategory">
+                <img src={bcgImageBlog} alt="" />
+                <h3 className="title">
+                    About Auhtor
+                </h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque alias culpa maiores amet eum fuga cumque sed! Harum, aliquam iure.
+                </p>
+            </div>
+
+            <div className="contentCategory">
+                <div className="recentPost">
+                    <h3 className="title">RECENT POSTS</h3>
+                    <RecentPostItem/>
+                </div>
+
+                <CategoryList/>
+                <TagName/>
+            </div>
         </div>
     )
 }
@@ -35,11 +106,13 @@ function BlogArticleItem({containtPos="center",listImage=[]}){
 
     const listImageLink=(()=>{
         let imageLinkComponent=[];
+        let imgCount=0;
 
         for (const index of listImage){
             if(index){
-                console.log(index)
-                imageLinkComponent.push(<div className="blogImgLink"><a href="#" className="link"><img src={index} alt="Image De Blog de article"/></a></div>);
+                imgCount++;
+                console.log(index);
+                imageLinkComponent.push(<div className="blogImgLink"><Link to={"/blogPageAction/"} className="link"><img src={index} alt="Image De Blog de article"/></Link></div>);
             }
             
         }
@@ -74,6 +147,7 @@ function BlogArticleItem({containtPos="center",listImage=[]}){
                     return index;
                 })}
             </div>
+
             <div className="blogDescr">
                 <div className="containt">
                     <div className="infoDetail"><p>
@@ -94,6 +168,7 @@ function BlogArticleItem({containtPos="center",listImage=[]}){
                     </div>
                 </div>
             </div>
+
             <div className="blogFooter">
 
             </div>
@@ -101,14 +176,14 @@ function BlogArticleItem({containtPos="center",listImage=[]}){
     )
 }
 
-function BlogSideBar(props){
+export function BlogSideBar(props){
     return(
         <div className="blogSideBar">
-            
+            <BlogListCategory/>
         </div>
     )
 }
-function BlogContent(props){
+export function BlogContent(props){
     return(
         <div className="blogContent">
             <ul className="blogListArticle">

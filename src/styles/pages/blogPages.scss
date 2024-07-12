@@ -28,14 +28,30 @@
     padding: 1rem;
 }
 
+.blogListArticle{
+    article{
+        margin-top: 0px;
+        margin-bottom: 1.5rem;
+    }
+}
 .blogSideBar{
     @include border;
-    width: 40%;
+    width: 75%;
     height: 100%;
 
     padding: 1rem;
 }
 
+
+.blogListCategory{
+
+    .headerCategory{
+        img{
+            width: 100%;
+            height: 20rem;
+        }
+    }
+}
 
 
 
